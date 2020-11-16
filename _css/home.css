@@ -1,0 +1,83 @@
+.nav-color{
+    color: white
+}
+
+.banner{
+    border-radius:40px;
+    padding: 1px
+    
+}
+
+.icon{
+    float: right;
+    padding-left: 30px
+}
+
+.bottom{
+    padding-bottom:5px;
+}
+.btn-width{
+    width: 100%;
+}
+
+.btn-cat-top{
+  width: 100%;
+}
+
+.btn-left-panel{
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.btn-left-panel:hover{
+    width: 100%;
+    background-color: black;
+    height: 50px;
+    text-align: left;
+    font-weight: 600;
+    color: white;
+}
+
+.btn-left-panel:hover .icon{
+    color: white;
+}
+
+.cart-box-border{
+  border-radius:20px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+.cart-border{
+   border-radius:20px;
+   border-color:white;
+
+
+  
+
+
+}
+
+
+
+.my-side-icons{
+  margin-left: 20px;
+}
+/*@media screen and (min-width:780px) {
+  .copy {
+    margin-left: -9px
+  }
+}*/
+
+/*.search-h:hover{
+    border: solid black 1px
+}*/
+
+.form-control:focus {
+  border-color: black;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 0, 0, 0.075);
+}
+
+
+.input-group-text{color:black; background-color: #ffffff;}

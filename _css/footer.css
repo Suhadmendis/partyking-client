@@ -1,0 +1,89 @@
+
+
+
+#footer-section{
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #1D2C41;
+    color: white;
+    padding-top: 70px;
+    padding-bottom: 10px;
+}
+
+#footer-logo-box{
+
+}
+
+#footer-logo-icon{
+    
+}
+
+#footer-logo-image{
+    width: 80px;
+
+}
+
+
+#footer-logo-description{
+    font-size: 14px;
+}
+
+.footer-logo-description-line{
+    margin: 0px;
+}
+
+
+
+#footer-category-box{
+    margin-top: 30px;
+}
+
+.footer-category-head{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+
+.footer-category-text{
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+
+
+#footer-policy-box{
+    margin-top: 30px;
+}
+
+
+.footer-policy-head{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.footer-policy-text{
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+
+
+#footer-contact-box{
+    margin-top: 30px;
+}
+
+.footer-contact-head{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.footer-contact-text{
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+#bottom-contact{
+    text-align: right;
+}

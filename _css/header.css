@@ -12,6 +12,8 @@
     color: #1D2C41;
     font-size: 20px;
     font-weight: 600;
+    outline: none;
+    text-decoration: none;
 }
 
 #main-search-palet{
@@ -81,4 +83,8 @@ padding-left:30px; */
 #header-top-items-test{
     margin-left: 2.5rem;
     font-size: 20px;
+}
+
+#heart-icon{
+    color: #1D2C41;
 }

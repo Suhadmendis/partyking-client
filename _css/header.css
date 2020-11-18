@@ -1,0 +1,84 @@
+
+
+
+#header-area{
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#company-name{
+    margin-top: 12px;
+    color: #1D2C41;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#main-search-palet{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#main-search{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 30rem;
+    height: 50px;
+    display: block;    
+    padding: .375rem .75rem .7rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #EBEBEB;
+    background-clip: padding-box;
+    border: 0px solid #EBEBEB;
+    border-radius: .7rem;
+    transition: .5s ease-in-out, .5s ease-in-out;
+
+    /* background: url(images/comment-author.gif) no-repeat scroll 7px 7px;
+padding-left:30px; */
+
+}
+
+#main-search:hover{
+    box-shadow: 0 0 5px 0.1rem rgba(29, 44, 65,0.2);
+
+}
+
+#main-search::placeholder {
+    color: #495057;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding-bottom: .9rem;
+    
+}
+
+#main-search:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #1D2C41;
+    outline: 0;
+    box-shadow: 0 0 5px 0.1rem rgba(29, 44, 65,0.2);
+}
+
+
+#header-top-items-heart{
+    margin-left: 2.5rem;
+    font-size: 25px;
+}
+#header-top-items-circle{
+    padding-top: 6px;
+    text-align: center;
+    margin-left: 2.8rem;
+    height: 38px;
+    width: 38px;
+    background-color: #1D2C41;
+    border-radius: 50px;
+    color: white;
+}
+#header-top-items-test{
+    margin-left: 2.5rem;
+    font-size: 20px;
+}

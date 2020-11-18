@@ -15,11 +15,17 @@
 
     <link rel="stylesheet" href="_css/main_search.css">
     <title>Partyking</title>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
 </head>
 <body>
 
 <br><br><br>
-    <div class="container">
+    <div class="container" id="app">
 
 
         
@@ -30,7 +36,7 @@
                 
                 <div id='sub-category-box'>
                 
-                    <div class="sub-category-button">
+                    <div class="sub-category-button scb-active">
                         Size
                     </div>
                     <div class="sub-category-button">
@@ -78,7 +84,7 @@
         <br>
         
         <div class="row">
-            <div class="col-md-6 nopadding">
+            <div class="col-md-6 nopadding" v-for="pro in pro_count">
                 <div class="search-product-box">
                     <div class="row">
                         <div class="col-md-4">
@@ -132,35 +138,8 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="search-product-box">
-            
-                </div>
-            </div>
 
-            <div class="col-md-6">
-                <div class="search-product-box">
             
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="search-product-box">
-            
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="search-product-box">
-            
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="search-product-box">
-            
-                </div>
-            </div>
         </div>
 
 
@@ -184,7 +163,15 @@
 
     
 
-
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!',
+            pro_count: 10
+        }
+    });
+</script>
 
 
 

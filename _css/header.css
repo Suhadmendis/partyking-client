@@ -69,6 +69,7 @@ padding-left:30px; */
 #header-top-items-heart{
     margin-left: 2.5rem;
     font-size: 25px;
+    color: #1D2C41;
 }
 #header-top-items-circle{
     padding-top: 6px;
@@ -80,11 +81,9 @@ padding-left:30px; */
     border-radius: 50px;
     color: white;
 }
-#header-top-items-test{
+#header-top-items-text{
     margin-left: 2.5rem;
     font-size: 20px;
-}
-
-#heart-icon{
     color: #1D2C41;
 }
+

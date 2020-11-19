@@ -1,0 +1,158 @@
+
+html, body{
+    height:100%;
+    font-family: 'Montserrat', sans-serif;
+}
+#seller-main-section{
+    
+}
+#seller-information-palet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f4f5;
+    height: 100vh;
+}
+
+#seller-information-palet-logo-box{
+    
+}
+#seller-information-palet-logo{
+    width: 240px;
+    margin-top: -50px;
+    
+}
+
+#seller-information-palet-benefits{
+    /* padding: 10px; */
+
+}
+
+#seller-information-palet-benefits-text-head{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.seller-information-palet-benefits-text-des{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 300;
+}
+
+
+
+
+/*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet */
+
+
+
+#seller-input-palet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#input-box{
+    width: 500px;
+    height: 500px;
+    padding: 30px;
+    /* background-color: lightblue; */
+
+}
+
+
+
+.input-text-head{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+
+
+.seller-input-palet-text-label{
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.seller-input-palet-text-box{
+    outline: none;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #1D2C41;
+    border-style: solid;
+
+    border: 1px solid rgba(29, 44, 65, .2);
+    width: 100%;
+    height: 40px;
+
+    font-weight: 500;
+    font-size: 14px;
+    
+    padding-left: 15px;
+    background-color: rgba(29, 44, 65, .01);
+}
+
+
+#seller-input-palet-forgot-password{
+    color: #1D2C41;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+
+#seller-input-palet-bottom{
+    margin-top: 20px;
+    width: 100%;
+    
+    
+}
+
+
+.seller-button {
+  background-color: rgba(29, 44, 65, 1); /* Green */
+  float: left;
+  border: none;
+  color: white;
+  padding: 9px 42px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+
+.seller-button:focus {
+    outline: none;
+}
+
+#seller-register-text-box{
+    float: left;
+}
+
+#seller-register-text{
+    margin-top: 12px;
+    margin-left: 12px;
+    font-size: 13px;
+    color:  rgba(29, 44, 65, 1);
+}
+
+
+
+
+/*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet */

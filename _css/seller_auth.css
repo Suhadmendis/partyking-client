@@ -46,6 +46,55 @@ html, body{
 }
 
 
+#new-seller-information-palet-logo-box{
+    
+}
+#new-seller-information-palet-logo{
+    width: 100px;
+    margin-top: -100px;
+    
+}
+
+#new-seller-information-palet-user-box{
+    
+}
+#new-seller-information-palet-user{
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    border-radius: 50%;
+    
+}
+
+#new-seller-information-palet-benefits{
+    /* background-color: red; */
+    width: 100%;
+}
+#new-seller-information-palet-benefits > #new-seller-information-palet-benefits-text-head{
+    padding: 10px;
+    text-align: center;
+}
+
+#new-seller-information-palet-benefits-text-head{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    
+}
+
+
+
+.new-seller-information-palet-benefits-text-des{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+
 
 
 /*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet */

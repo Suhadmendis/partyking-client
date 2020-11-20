@@ -54,6 +54,7 @@ html, body{
 }
 .seller-relationship-palet-image-user{
     width: 100px;
+    border-radius: 50%;
 }
 
 .seller-relationship-palet-text{

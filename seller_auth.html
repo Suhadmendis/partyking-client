@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <title>Product</title>
     <meta charset="utf-8">
@@ -9,25 +10,29 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    
-    
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
         integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
         crossorigin="anonymous" />
 
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
-
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+        integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="_css/seller_auth.css">
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
-  
+
 
 </head>
+
 <body>
 
 
@@ -36,7 +41,7 @@
 
     <div class="container-fluid" id="app">
         <div class="row">
-            <div class="col-lg-3" id="seller-information-palet">
+            <div class="col-lg-3" id="seller-information-palet" v-show="information_pallet">
                 <div id="seller-information-palet-logo-box">
                     <img id="seller-information-palet-logo" src="_img/logo full site.png" alt="">
                 </div>
@@ -64,6 +69,34 @@
                     </p>
                 </div>
             </div>
+
+            <div class="col-md-3" id="seller-information-palet" v-show="!information_pallet">
+                <div id="new-seller-information-palet-logo-box">
+                    <img id="new-seller-information-palet-logo" src="_img/logo full site.png" alt="">
+                </div>
+                <div id="new-seller-information-palet-user-box">
+                    <img id="new-seller-information-palet-user" v-bind:src="user.url" alt="">
+                </div>
+                <div id="new-seller-information-palet-benefits">
+
+                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name</p>
+                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name != ''">
+                        {{ user.full_name }}</p>
+
+                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
+                    <!--    Email: {{ user.email }}-->
+                    <!--</p>-->
+                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
+                    <!--    Contact Number: {{ user.contact_number }}-->
+                    <!--</p>-->
+                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
+                    <!--    Password: Valid-->
+                    <!--</p>-->
+
+                </div>
+            </div>
+
+
             <div class="col-lg-9" id="seller-input-palet">
                 <div id="input-box">
                     <p class="input-text-head">
@@ -90,6 +123,15 @@
                                 </p>
                             </a>
                         </div>
+
+                        <div id="seller-register-text-box" style="padding: 6px;
+                                                margin: 4px;
+                                                border-radius: 7px;">
+
+
+                            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                            </fb:login-button>
+                        </div>
                     </div>
 
                 </div>
@@ -98,14 +140,8 @@
 
 
             </div>
-       </div>
-   </div>
-           
-
-
-
-    
-      
+        </div>
+    </div>
 
 
 
@@ -117,6 +153,47 @@
 
 
 
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '400125357808841',
+                cookie: true,
+                xfbml: true,
+                version: 'v9.0'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+        var userid = "";
+        function checkLoginState() {
+            FB.getLoginStatus(function (response) {
+                // statusChangeCallback(response);
+                // console.log(response.status);
+                console.log(response.authResponse);
+                // console.log(response.authResponse.userID);
+
+                if (response.status) {
+                    userid = response.authResponse.userID;
+
+                    app.getInfo(response.authResponse.userID, response.authResponse.accessToken);
+                }
+
+            });
+
+
+
+
+        }
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
 
 
@@ -124,10 +201,47 @@
 
 
 
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                information_pallet: false,
+                user: { full_name: "", email: "", password: "", url: "_img/linked_face.PNG" }
+            },
+            methods: {
+                getInfo: function (fb_id, fb_accesst) {
+                    axios
+                        .get('https://graph.facebook.com/me?access_token=' + fb_accesst)
+                        .then(response => {
+                            //   this.info = response;
+                            this.user.full_name = response.data.name;
+                            this.getPic(fb_id);
+                        });
 
 
 
+                },
+                getPic: function (fb_id) {
+                    axios
+                        .get('https://graph.facebook.com/' + fb_id + '/picture?redirect=0&width=400')
+                        .then(response => {
+                            this.user.url = response.data.data.url;
+                            // console.log(response.data.data.url);
+                            setTimeout(function () { app.checkUser() }, 5000);
+                        });
 
+                },
+                checkUser: function () {
+                    alert("Go to the Next Page");
+
+                }
+            }
+            //         components: {
+            //   'i-tabs' : Tabs,
+            //   'i-tab-pane': Tabpane
+            // }
+        });
+    </script>
 
 
 
@@ -145,5 +259,6 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
 
-  </body>
+</body>
+
 </html>

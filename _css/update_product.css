@@ -3,3 +3,91 @@ html, body{
     height:100%;
     font-family: 'Montserrat', sans-serif;
 }
+
+
+
+
+
+
+
+
+
+#primary-upload-image-area{
+    padding: 10px;
+    width: 100%;
+    
+    /* background-color: saddlebrown; */
+}
+#primary-upload-image{
+    width: 200px;
+}
+
+.sub-upload-image{
+    
+    width: 100%;
+    /* height: 300px; */
+    /* background-color: seagreen; */
+}
+
+
+
+.upload-product-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.upload-product-details-pallet{
+    width: 100%;
+}
+
+.seller-input-palet-text-label{
+    margin-bottom: 5px;
+    font-weight: 500;
+    font-size: 14px;
+    width: 100%;
+}
+
+.seller-input-palet-text-box{
+    outline: none;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #1D2C41;
+    border-style: solid;
+
+    border: 1px solid rgba(29, 44, 65, .2);
+    
+    height: 40px;
+
+    font-weight: 500;
+    font-size: 14px;
+    
+    padding-left: 15px;
+    background-color: rgba(29, 44, 65, .01);
+}
+
+
+.seller-input-palet-des-box{
+    outline: none;
+    border-radius: 6px;
+    border-width: 1px;
+    border-color: #1D2C41;
+    border-style: solid;
+
+    border: 1px solid rgba(29, 44, 65, .2);
+    
+    
+
+    font-weight: 500;
+    font-size: 14px;
+    
+    padding-left: 15px;
+    background-color: rgba(29, 44, 65, .01);
+}
+
+.btn-secondary{
+    color: #fff;
+    background-color: #1D2C41;
+    border-color: #1D2C41;
+}

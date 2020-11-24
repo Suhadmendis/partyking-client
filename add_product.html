@@ -27,7 +27,7 @@
         integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="_css/update_product.css">
+    <link rel="stylesheet" href="_css/add_product.css">
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
 
 
@@ -37,21 +37,113 @@
 
 
 
-
+<br>
 
     <div class="container-fluid" id="app">
-      <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, exercitationem.</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Add Product</h2>
+            </div>
+        </div>
+        
+        <br>
+        <br>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div id="primary-upload-image-area">
+
+                    <img id="primary-upload-image" src="_img/products/pro0004.jpg" alt="">
+                    <div class="sub-upload-image">
+                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
+                            Upload
+                            <input id="upload-input" type="file" name="file" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="upload-product-details">
+                    <!-- <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
+                        Upload
+                        <input id="upload-input" type="file" name="file" />
+                    </div> -->
+                    <div class="upload-product-details-pallet">
+                        <label for="" class="seller-input-palet-text-label"> Name: </label>
+                        <input type="text" class="seller-input-palet-text-box col-lg-8" v-model="PRODUCT.name">
+                        <br><br>
+
+                        <div class="input-group mb-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" 
+                                aria-expanded="false">{{ selected_category.category_name }}</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" v-for="category in categories"
+                                    @click="select_cat(category)">{{ category.category_name }}</a>
+                            </div>
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{ selected_subCategory.name }}</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" v-for="subCategory in subCategories"
+                                    @click="select_sub_cat(subCategory)">{{ subCategory.name }}</a>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{ selected_condition }}</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" v-for="condition in conditions"
+                                    @click="select_condition(condition)" >{{ condition.name }}</a>
+                            </div>
+                        </div>
+                       
+                        <label for="" class="seller-input-palet-text-label"> Brand: </label>
+                        <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.brand">
+                        <br><br>
+
+                        <label for="" class="seller-input-palet-text-label"> Model: </label>
+                        <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.model">
+                        <br><br>
+
+                        <label for="" class="seller-input-palet-text-label"> Theme: </label>
+                        <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.theme">
+                        <br><br>
+
+                        <label for="" class="seller-input-palet-text-label">Description: </label>
+                        <textarea class="seller-input-palet-des-box col-lg-12" name="" id="" cols="30" rows="8" v-model="PRODUCT.description"></textarea>
+                        <br><br>
+
+                        <div class="input-group mb-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{ selected_type }}</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" v-for="type in types"
+                                    @click="select_type(type)">{{ type.name }}</a>
+                            </div>
+                        </div>                    
+
+                        <label for="" class="seller-input-palet-text-label"> Day: </label>
+                        <input type="number" class="seller-input-palet-text-box" v-model="PRODUCT.day_price">
+                        <br><br>
+
+                        <label for="" class="seller-input-palet-text-label"> Sell: </label>
+                        <input type="number" class="seller-input-palet-text-box" v-model="PRODUCT.sell_price">
+                        <br><br>
+
+                        <button @click="save_product()" class="btn btn-secondary">Save</button>
+                        
+                    </div>
+
+                    <br><br>
+   
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-
-
-
-
-
-
-
 
     <script>
         window.fbAsyncInit = function () {
@@ -101,21 +193,45 @@
 
 
 
+
+
+
+
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                information_pallet: false,
-                user: { full_name: "Suhad Mendis", email: "suhad.a.mendis@gmail.com", password: "", url: "_img/linked_face.PNG", contact_number: "+94778182596" },
-                PRODUCTS: [{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },{ REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" }, { REF: "0002", name: "The Shining", des: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, at. Asperiores quisquam ut excepturi iure non, voluptates consectetur veniam delectus dicta autem minus fugit, fugiat corporis repellendus reiciendis vitae nulla?", type: "Rent and Sell", price: "1,800", day_price: "6,800", condition: "Used", brand: "BuyCostumes", theme: "Cosplay", contact_number: "+94778182596" },]
+                PRODUCT: {
+                    name: "",
+                    category_ref: "",
+                    sub_category_ref: "",
+                    condition: "",
+                    brand: "",
+                    model: "",
+                    theme: "",
+                    description: "",
+                    type: "",
+                    day_price: "",
+                    sell_price: "",
+                },
+                categories: "",
+                subCategories: "",
+                conditions: [{ name: "New" }, { name: "New with tags" }, { name: "Used" }],
+                types: [{ name: "Rent" }, { name: "Rent or Sell" }, { name: "Sell" }],
+                selected_category: { REF: "", category_name: "Category" },
+                selected_subCategory: { REF: "", name: "Sub Category" },
+                selected_condition: "Condition",
+                selected_type: "Type",
+            },
+            mounted: function () {
+                this.generate();
             },
             methods: {
-                getInfo: function (fb_id, fb_accesst) {
+                generate: function () {
                     axios
-                        .get('https://graph.facebook.com/me?access_token=' + fb_accesst)
+                        .get('server/product_operation_data.php?Command=generate')
                         .then(response => {
-                            this.user.full_name = response.data.name;
-                            this.getPic(fb_id);
+                            this.categories = response.data[0];
                         });
                 },
                 getPic: function (fb_id) {
@@ -126,18 +242,54 @@
                             setTimeout(function () { app.checkUser() }, 5000);
                         });
                 },
-                checkUser: function () {
-                    alert("Go to the Next Page");
+                select_cat: function (value) {
+
+                    this.selected_category = value;
+                    this.PRODUCT.category_ref = value.REF;
+                    axios
+                        .get('server/product_operation_data.php?Command=getSubCategories&REF=' + this.selected_category.REF)
+                        .then(response => {
+                            this.subCategories = response.data[0];
+                        });
+
+                },
+                select_sub_cat: function (value) {
+                    this.selected_subCategory = value;
+                    this.PRODUCT.sub_category_ref = value.REF;
+                },
+                select_condition: function (value) {
+                    this.selected_condition = value.name;
+                    this.PRODUCT.condition = value.name;
+                },
+                select_type: function (value) {
+                    this.selected_type = value.name;
+                    this.PRODUCT.type = value.name;
+                },
+                save_product: function () {
+
+                    axios
+                        .get('server/product_operation_data.php?Command=save_product'
+                            + '&name=' + this.PRODUCT.name
+                            + '&category_ref=' + this.PRODUCT.category_ref
+                            + '&sub_category_ref=' + this.PRODUCT.sub_category_ref
+                            + '&condition=' + this.PRODUCT.condition
+                            + '&brand=' + this.PRODUCT.brand
+                            + '&model=' + this.PRODUCT.model
+                            + '&theme=' + this.PRODUCT.theme
+                            + '&description=' + this.PRODUCT.description
+                            + '&type=' + this.PRODUCT.type
+                            + '&day_price=' + this.PRODUCT.day_price
+                            + '&sell_price=' + this.PRODUCT.sell_price
+                        )
+                        .then(response => {
+                            if (response.data == "Saved") {
+                                alert("Saved");
+                            }
+                        });
                 }
             }
         });
     </script>
-
-
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

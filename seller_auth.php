@@ -1,3 +1,17 @@
+<?php 
+include './CheckCookie.php';
+$cookie_name = "pk_seller";
+$mo = "";
+if (isset($_COOKIE[$cookie_name])) {
+
+    // $mo = chk_cookie($_COOKIE[$cookie_name]);
+
+    header('Location: ' . "seller_platform.php");
+}else{
+    
+}
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -141,6 +155,41 @@
 
             </div>
         </div>
+
+
+
+
+
+
+
+
+      
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="register_user()">Register</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
     </div>
 
 
@@ -200,48 +249,7 @@
 
 
 
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                information_pallet: false,
-                user: { full_name: "", email: "", password: "", url: "_img/linked_face.PNG" }
-            },
-            methods: {
-                getInfo: function (fb_id, fb_accesst) {
-                    axios
-                        .get('https://graph.facebook.com/me?access_token=' + fb_accesst)
-                        .then(response => {
-                            //   this.info = response;
-                            this.user.full_name = response.data.name;
-                            this.getPic(fb_id);
-                        });
-
-
-
-                },
-                getPic: function (fb_id) {
-                    axios
-                        .get('https://graph.facebook.com/' + fb_id + '/picture?redirect=0&width=400')
-                        .then(response => {
-                            this.user.url = response.data.data.url;
-                            // console.log(response.data.data.url);
-                            setTimeout(function () { app.checkUser() }, 5000);
-                        });
-
-                },
-                checkUser: function () {
-                    alert("Go to the Next Page");
-
-                }
-            }
-            //         components: {
-            //   'i-tabs' : Tabs,
-            //   'i-tab-pane': Tabpane
-            // }
-        });
-    </script>
+    <script src="_js/seller_auth.js"></script>
 
 
 

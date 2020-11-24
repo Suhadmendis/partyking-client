@@ -1,3 +1,17 @@
+<?php 
+include './CheckCookie.php';
+$cookie_name = "pk_seller";
+$mo = "";
+if (isset($_COOKIE[$cookie_name])) {
+
+    // $mo = chk_cookie($_COOKIE[$cookie_name]);
+
+    
+}else{
+    header('Location: ' . "seller_auth.php");
+}
+
+?>
 <!doctype html>
 <html lang="en">
 

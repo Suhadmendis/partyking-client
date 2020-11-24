@@ -127,11 +127,11 @@
                         </div>                    
 
                         <label for="" class="seller-input-palet-text-label"> Day: </label>
-                        <input type="number" class="seller-input-palet-text-box" v-model="PRODUCT.day_price">
+                        <input type="number" class="seller-input-palet-text-box" :disabled="selected_type == 'Sell'" v-model="PRODUCT.day_price">
                         <br><br>
 
                         <label for="" class="seller-input-palet-text-label"> Sell: </label>
-                        <input type="number" class="seller-input-palet-text-box" v-model="PRODUCT.sell_price">
+                        <input type="number" class="seller-input-palet-text-box" :disabled="selected_type == 'Rent'" v-model="PRODUCT.sell_price">
                         <br><br>
 
                         <button @click="save_product()" class="btn btn-secondary">Save</button>
@@ -196,100 +196,7 @@
 
 
 
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                PRODUCT: {
-                    name: "",
-                    category_ref: "",
-                    sub_category_ref: "",
-                    condition: "",
-                    brand: "",
-                    model: "",
-                    theme: "",
-                    description: "",
-                    type: "",
-                    day_price: "",
-                    sell_price: "",
-                },
-                categories: "",
-                subCategories: "",
-                conditions: [{ name: "New" }, { name: "New with tags" }, { name: "Used" }],
-                types: [{ name: "Rent" }, { name: "Rent or Sell" }, { name: "Sell" }],
-                selected_category: { REF: "", category_name: "Category" },
-                selected_subCategory: { REF: "", name: "Sub Category" },
-                selected_condition: "Condition",
-                selected_type: "Type",
-            },
-            mounted: function () {
-                this.generate();
-            },
-            methods: {
-                generate: function () {
-                    axios
-                        .get('server/product_operation_data.php?Command=generate')
-                        .then(response => {
-                            this.categories = response.data[0];
-                        });
-                },
-                getPic: function (fb_id) {
-                    axios
-                        .get('https://graph.facebook.com/' + fb_id + '/picture?redirect=0&width=400')
-                        .then(response => {
-                            this.user.url = response.data.data.url;
-                            setTimeout(function () { app.checkUser() }, 5000);
-                        });
-                },
-                select_cat: function (value) {
-
-                    this.selected_category = value;
-                    this.PRODUCT.category_ref = value.REF;
-                    axios
-                        .get('server/product_operation_data.php?Command=getSubCategories&REF=' + this.selected_category.REF)
-                        .then(response => {
-                            this.subCategories = response.data[0];
-                        });
-
-                },
-                select_sub_cat: function (value) {
-                    this.selected_subCategory = value;
-                    this.PRODUCT.sub_category_ref = value.REF;
-                },
-                select_condition: function (value) {
-                    this.selected_condition = value.name;
-                    this.PRODUCT.condition = value.name;
-                },
-                select_type: function (value) {
-                    this.selected_type = value.name;
-                    this.PRODUCT.type = value.name;
-                },
-                save_product: function () {
-
-                    axios
-                        .get('server/product_operation_data.php?Command=save_product'
-                            + '&name=' + this.PRODUCT.name
-                            + '&category_ref=' + this.PRODUCT.category_ref
-                            + '&sub_category_ref=' + this.PRODUCT.sub_category_ref
-                            + '&condition=' + this.PRODUCT.condition
-                            + '&brand=' + this.PRODUCT.brand
-                            + '&model=' + this.PRODUCT.model
-                            + '&theme=' + this.PRODUCT.theme
-                            + '&description=' + this.PRODUCT.description
-                            + '&type=' + this.PRODUCT.type
-                            + '&day_price=' + this.PRODUCT.day_price
-                            + '&sell_price=' + this.PRODUCT.sell_price
-                        )
-                        .then(response => {
-                            if (response.data == "Saved") {
-                                alert("Saved");
-                            }
-                        });
-                }
-            }
-        });
-    </script>
+<script src="_js/add_product.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

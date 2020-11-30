@@ -405,6 +405,35 @@ html, body{
   top: 0;
 }
 
+.edit-icon-name{
+    margin-left: 10px;
+    font-size: 18px;
+    opacity: .5;
+}
+.edit-icon-tagline{
+    margin-left: 10px;
+    font-size: 16px;
+    opacity: .5;
+}
+.edit-icon-other{
+    margin-left: 10px;
+    font-size: 12px;
+    opacity: .5;
+}
+
+
+.edit-icon-name:hover{    
+    opacity: 1;
+}
+.edit-icon-tagline:hover{
+    opacity: 1;
+}
+.edit-icon-other:hover{
+    opacity: 1;
+}
+
+
+
 /*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet */
 
 

@@ -50,14 +50,10 @@ if (isset($_COOKIE[$cookie_name])) {
 
 <body>
 
-
-
-
-
     <div class="container-fluid" id="app">
         <div class="row">
 
-            <div class="col-md-2 nopadding" id="seller-information-palet">
+            <div class="col-lg-2 nopadding" id="seller-information-palet">
                 <div id="account-information-palet-logo-box">
                     <img id="account-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
@@ -80,7 +76,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         Contact Number:
                     </p> -->
                     <p class="account-information-palet-benefits-text-subdes">
-                        {{ user.contact_number }}
+                        {{ user.contact_number }} <i class="fas fa-pen edit-icon-other" @click="edit('user_number');"></i>
                     </p>
                     
                 </div>
@@ -105,19 +101,19 @@ if (isset($_COOKIE[$cookie_name])) {
             <!-- <div class="col-lg-10 nopadding"> -->
 
                 <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-lg-2">
                         <div id="store-logo-area">
                             <img id="store-logo" src="_img/logo full site.webp" alt="">
                         </div>
                     </div>
                 
-                    <div class="col-md-5">
+                    <div class="col-lg-5">
                 
                         <p class="store-input-name">
-                            Store Name
+                            {{ store.name }} <i class="fas fa-pen edit-icon-name" @click="edit('store_name');"></i>
                         </p>
                         <p class="store-input-name-tagline">
-                            Tagline
+                            {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
                         </p>
                 
                 
@@ -126,29 +122,29 @@ if (isset($_COOKIE[$cookie_name])) {
                             <input id="upload-input" type="file" name="file" />
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-lg-5">
                 
                         <p class="store-input-name-email">
-                            Email
+                            {{ store.email }} <i class="fas fa-pen edit-icon-other" @click="edit('store_email');"></i>
                         </p>
                         <p class="store-input-name-contact-number">
-                            Contact Number
+                            {{ store.contact_number }} <i class="fas fa-pen edit-icon-other" @click="edit('store_number');"></i>
                         </p>
                         <p class="store-input-name-street-address">
-                            Street address
+                            {{ store.street_address }} <i class="fas fa-pen edit-icon-other" @click="edit('store_address');"></i>
                         </p>
                         <p class="store-input-name-city">
-                            City
+                            {{ store.city }} <i class="fas fa-pen edit-icon-other" @click="edit('store_city');"></i>
                         </p>
                         <p class="store-input-name-postal">
-                            ZIP / Postal
+                            {{ store.postal }} <i class="fas fa-pen edit-icon-other" @click="edit('store_postal');"></i>
                         </p>
                     </div>
                 
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         
                         <a href="add_product.html">
                             <button class="seller-button update-button">Add Product</button>
@@ -159,13 +155,13 @@ if (isset($_COOKIE[$cookie_name])) {
 
                 <div class="row" id="store-item-pallet" v-show="product_pallet">
                     <br><br><br>
-                    <div class="col-md-6" v-for="product in PRODUCTS">
+                    <div class="col-lg-6" v-for="product in PRODUCTS">
                         <div class="store-item-image-area">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-lg-3">
                                     <img class="store-item-image" src="_img/products/pro0001.webp" alt="">
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-lg-9">
                                     <div class="store-item-details">
 
                                         <p class="item-label-name">
@@ -204,78 +200,48 @@ if (isset($_COOKIE[$cookie_name])) {
                             </div>
                         </div>
                     </div>
-                   
-                
-                    
-                
                 </div>
 
+            </div>
+        </div>
+        
 
 
-            
 
-
-
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ message_head }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                        <br>
+                        <br>
+                        <input type="text" class="seller-input-palet-text-box" v-model="updateMainPanel" :placeholder="editplaceholder">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" @click="edit_update(editflag)">Update</button>
+                    </div>
+                </div>
             </div>
         </div>
 
 
 
-        
+
+
+
+
     </div>
 
-
-
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                information_pallet: false,
-                user: { full_name: "Suhad Mendis", email: "suhad.a.mendis@gmail.com", password: "", url: "_img/linked_face.webp", contact_number: "+94778182596" },
-                PRODUCTS: [],
-                product_pallet: false
-            },
-            mounted: function () {
-                this.generate();
-            },
-            methods: {
-                generate: function () {
-                    axios
-                        .get('server/product_operation_data.php?Command=generateProducts')
-                        .then(response => {
-                            this.PRODUCTS = response.data[0];
-                            this.product_pallet = true;
-                        });
-                },
-                getInfo: function (fb_id, fb_accesst) {
-                    axios
-                        .get('https://graph.facebook.com/me?access_token=' + fb_accesst)
-                        .then(response => {
-                            this.user.full_name = response.data.name;
-                            this.getPic(fb_id);
-                        });
-                },
-                getPic: function (fb_id) {
-                    axios
-                        .get('https://graph.facebook.com/' + fb_id + '/picture?redirect=0&width=400')
-                        .then(response => {
-                            this.user.url = response.data.data.url;
-                            setTimeout(function () { app.checkUser() }, 5000);
-                        });
-                },
-                checkUser: function () {
-                    alert("Go to the Next Page");
-                }
-            }
-        });
-    </script>
-
-
-
-
-
-
+    
+    <script src="_js/seller_platform.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

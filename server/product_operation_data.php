@@ -33,8 +33,20 @@ if ($_GET["Command"] == "generateProducts") {
     
     array_push($objArray,$row);
 
+
+    $sql = "SELECT * FROM m_registration where REF = '" . $_SESSION['REF'] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetchAll();
+
+    array_push($objArray,$row);
+
+    $sql = "SELECT * FROM m_store_registration where seller_ref = '" . $_SESSION['REF'] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetchAll();
+
+    array_push($objArray,$row);
+
     echo json_encode($objArray);
-    
 }
 
 if ($_GET["Command"] == "getSubCategories") {
@@ -71,8 +83,8 @@ if ($_GET["Command"] == "save_product") {
         // ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "')";
         // $result = $conn->query($sql);
 
-        $sql    = "Insert into m_product(REF, name, category_ref, sub_category_ref, pro_condition, brand, model, theme, description, type, day_price, sell_price, user)values
-        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['type'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "')";
+        $sql    = "Insert into m_product(REF, name, category_ref, sub_category_ref, pro_condition, brand, model, theme, description, type, day_price, sell_price, user,image_1)values
+        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['type'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "','" . $_GET['image'] . "')";
         $result = $conn->query($sql);
 
         // $sql    = "Insert into m_product(REF, name, category_ref,sub_category_ref,condition)values
@@ -97,4 +109,62 @@ if ($_GET["Command"] == "save_product") {
 }
 
 
+if ($_GET["Command"] == "edit_update") {
+   header('Content-Type: application/json');
+    
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        if ($_GET['flag'] == "user_number") {
+            $sql = "update m_registration set tel_1 = '" . $_GET['value'] . "' where REF = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_name") {
+            $sql = "update m_store_registration set name = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "tagline") {
+            $sql = "update m_store_registration set tagline = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_email") {
+            $sql = "update m_store_registration set email = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_number") {
+            $sql = "update m_store_registration set tel_1 = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_address") {
+            $sql = "update m_store_registration set address_1 = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_city") {
+            $sql = "update m_store_registration set city_name = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+        if ($_GET['flag'] == "store_postal") {
+            $sql = "update m_store_registration set postal = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $result = $conn->query($sql);
+        }
+
+      
+
+        $conn->commit();
+        echo "Saved";
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+    
+}
 

@@ -7,6 +7,8 @@ require_once ("../DB_connector.php");
 
 date_default_timezone_set('Asia/Colombo');
 
+
+
 if ($_GET["Command"] == "checkUser") {
    header('Content-Type: application/json');
     
@@ -128,8 +130,8 @@ if ($_GET["Command"] == "login_user_fb") {
         $ip = $_SERVER['REMOTE_ADDR'];
         $_SESSION['email'] = $_GET['fb_id'];
         $_SESSION['REF'] = $row['REF'];
-        $_SESSION['CURRENT_USER'] = $row['first_name']. " ".$row['first_name'];
-    
+        $_SESSION['CURRENT_USER'] = $row['first_name']. " ".$row['last_name'];
+
         $action = "ok";
         $cookie_name = "pk_seller";
         $cookie_value = $_GET['fb_id'];
@@ -148,3 +150,38 @@ if ($_GET["Command"] == "login_user_fb") {
         echo $action;
     }
 }
+
+
+
+
+if ($_GET["Command"] == "inquiry") {
+
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+    
+            $sql = "SELECT * FROM m_inquiry WHERE email =  '" . $_GET['email'] . "'";
+            $result = $conn->query($sql);
+
+            if ($row = $result->fetch()) {
+                    
+                echo "Already Applied";
+            } else {
+
+                $sql = "Insert into m_inquiry(email, full_name, contact)values
+                ('" . $_GET['email'] . "','" . $_GET['full_name'] . "','" . $_GET['contact'] . "')";
+                $result = $conn->query($sql);
+            
+                $conn->commit();
+                echo "Done";
+            }
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+
+}
+
+
+

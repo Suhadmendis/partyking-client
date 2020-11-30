@@ -13,6 +13,9 @@ var app = new Vue({
       type: "",
       day_price: "",
       sell_price: "",
+      pro_image: "_img/products/pro0004.jpg",
+      pro_image_pass: 0,
+      image: "",
     },
     categories: "",
     subCategories: "",
@@ -84,6 +87,10 @@ var app = new Vue({
         alert("Name is not Entered");
         return;
       }
+      if (this.PRODUCT.pro_image_pass == 0) {
+        alert("Please insert an image");
+        return;
+      }
       if (this.PRODUCT.category_ref == "") {
         alert("Category is not Entered");
         return;
@@ -96,9 +103,6 @@ var app = new Vue({
         alert("Condition is not Entered");
         return;
       }
-      // if (this.PRODUCT.brand == "") { alert("Brand is not Entered"); return; }
-      // if (this.PRODUCT.model == "") { alert("Model is not Entered"); return; }
-      // if (this.PRODUCT.theme == "") { alert("Theme is not Entered"); return; }
       if (this.PRODUCT.description == "") {
         alert("Description is not Entered");
         return;
@@ -155,11 +159,14 @@ var app = new Vue({
             "&day_price=" +
             this.PRODUCT.day_price +
             "&sell_price=" +
-            this.PRODUCT.sell_price
+            this.PRODUCT.sell_price +
+            "&image=" +
+            this.PRODUCT.image
         )
         .then((response) => {
           if (response.data == "Saved") {
-            alert("Saved");
+            this.upload_image();
+            console.log("fdd1");
             this.PRODUCT.name = "";
             this.PRODUCT.category_ref = "";
             this.PRODUCT.sub_category_ref = "";
@@ -174,5 +181,77 @@ var app = new Vue({
           }
         });
     },
+    upload_image: function () {
+      console.log("fdd2");
+      // $("#myform").change(function () {
+      var fd = new FormData();
+      var files = $("#upload-input")[0].files[0];
+      fd.append("file", files);
+      console.log("fdd3");
+      $.ajax({
+        url: "server/image_upload.php?Command=post_to_hdd",
+        dataType: "script",
+        cache: false,
+        contentType: false,
+        processData: false,
+        data: fd,
+        type: "post",
+        success: function (response) {
+          alert("Saved");
+          app.PRODUCT.pro_image_pass = 0;
+          app.PRODUCT.pro_image = "_img/products/pro0004.jpg";
+        },
+      });
+    },
   },
 });
+
+
+
+
+
+$(document).ready(function () {
+  
+  $("#upload-input").change(function () {
+  // $("#myform").change(function () {
+    var fd = new FormData();
+    var files = $("#upload-input")[0].files[0];
+    fd.append("file", files);
+  
+    $.ajax({
+      url: "server/image_upload.php?Command=upload",
+      dataType: "script",
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: fd,
+      type: "post",
+      success: function (response) {
+        // if (response != 0) {
+        //   $("#img").attr("src", response);
+        //   $(".preview img").show(); // Display image element
+        // } else {
+        //   alert("file not uploaded");
+console.log(response);
+        if (response.length < 20) {
+          app.PRODUCT.pro_image = "uploads/1/products/" + response;
+          app.PRODUCT.image = response;
+          app.PRODUCT.pro_image_pass = 1;
+
+        }else{
+          alert(response);
+          app.PRODUCT.pro_image_pass = 0;
+        }
+
+        // document.getElementById("img_path").innerHTML =
+        //   '<img src="uploads/item/books/' + res + '" alt="" width="400" >';
+        // document.getElementById("img_logo").value = res;
+        
+
+        // }
+      },
+    });
+  });
+});
+
+

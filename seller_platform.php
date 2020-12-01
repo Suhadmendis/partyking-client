@@ -8,7 +8,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
     
 }else{
-    header('Location: ' . "seller_auth.php");
+    // header('Location: ' . "seller_auth.php");
 }
 
 ?>
@@ -102,7 +102,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
             <div class="col-lg-10 nopadding" id="store-input-palet">
             <!-- <div class="col-lg-10 nopadding"> -->
-
+<br>
                 <div class="row">
                     <div class="col-lg-2">
                         <div id="store-logo-area">
@@ -151,7 +151,7 @@ if (isset($_COOKIE[$cookie_name])) {
                     <div class="col-lg-12">
                         
                         <a href="add_product.html">
-                            <button class="seller-button update-button">Add Product</button>
+                            <button class="seller-button">Add Product</button>
                         </a>
 
                     </div>
@@ -162,10 +162,10 @@ if (isset($_COOKIE[$cookie_name])) {
                     <div class="col-lg-6" v-for="product in PRODUCTS">
                         <div class="store-item-image-area">
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-lg-4">
                                     <img class="store-item-image" v-bind:src="'uploads/1/products/' + product.image_1" alt="">
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-lg-8">
                                     <div class="store-item-details">
 
                                         <p class="item-label-name">
@@ -194,7 +194,7 @@ if (isset($_COOKIE[$cookie_name])) {
                                                 Day - Rs {{ product.day_price }}
                                             </p>
                                             <a href="update_product.html">
-                                                <button class="seller-button update-button">Update</button>
+                                                <button class="update-button">Update</button>
                                             </a>
                                             
                                         </div>

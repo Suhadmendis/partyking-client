@@ -13,7 +13,7 @@ var app = new Vue({
       type: "",
       day_price: "",
       sell_price: "",
-      pro_image: "_img/products/pro0004.jpg",
+      pro_image: "_img/imageupload.png",
       pro_image_pass: 0,
       image: "",
     },
@@ -196,7 +196,7 @@ var app = new Vue({
         success: function (response) {
           alert("Saved");
           app.PRODUCT.pro_image_pass = 0;
-          app.PRODUCT.pro_image = "_img/products/pro0004.jpg";
+          app.PRODUCT.pro_image = "_img/imageupload.png";
         },
       });
     },

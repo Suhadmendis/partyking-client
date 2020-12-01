@@ -198,7 +198,7 @@ if ($_GET["Command"] == "store_logo_upload") {
     }
 
     // Check file size
-    if ($_FILES["file"]["size"] > 500000) {
+    if ($_FILES["file"]["size"] > 1048576) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
     }

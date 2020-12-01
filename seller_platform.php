@@ -8,7 +8,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
     
 }else{
-    // header('Location: ' . "seller_auth.php");
+    header('Location: ' . "seller_auth.php");
 }
 
 ?>
@@ -20,6 +20,8 @@ if (isset($_COOKIE[$cookie_name])) {
     <title>Product</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="theme-color" content="#1D2C41">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -91,7 +93,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <img id="account-information-store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="" alt="">
                     </div>
                     <p class="account-information-store-name">
-                        Store Name
+                        {{ store.name }}
                     </p>
                   
                 </div>

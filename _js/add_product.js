@@ -166,7 +166,6 @@ var app = new Vue({
         .then((response) => {
           if (response.data == "Saved") {
             this.upload_image();
-            console.log("fdd1");
             this.PRODUCT.name = "";
             this.PRODUCT.category_ref = "";
             this.PRODUCT.sub_category_ref = "";
@@ -182,12 +181,10 @@ var app = new Vue({
         });
     },
     upload_image: function () {
-      console.log("fdd2");
       // $("#myform").change(function () {
       var fd = new FormData();
       var files = $("#upload-input")[0].files[0];
       fd.append("file", files);
-      console.log("fdd3");
       $.ajax({
         url: "server/image_upload.php?Command=post_to_hdd",
         dataType: "script",
@@ -232,7 +229,7 @@ $(document).ready(function () {
         //   $(".preview img").show(); // Display image element
         // } else {
         //   alert("file not uploaded");
-console.log(response);
+        console.log(response);
         if (response.length < 20) {
           app.PRODUCT.pro_image = "uploads/1/products/" + response;
           app.PRODUCT.image = response;

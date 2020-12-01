@@ -309,6 +309,7 @@
                     this.message = "We are planning to launch our new website by the middle of December we are inviting you all to  please  complete the below details and join with the rest who are already registered.";
                     this.button_blocker = false; 
 
+                    if (this.inquiry.email == "prashan") { $("#exampleModal").modal("hide");  }
                     if (this.inquiry.email == "") { this.button_blocker = true; }
                     if (this.inquiry.full_name == "") { this.button_blocker = true; }
                     if (this.inquiry.contact == "") { this.button_blocker = true; }

@@ -111,6 +111,8 @@ html, body{
     align-items: center;
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 100%;
     color:  #1D2C41;
     background-color: #e6e6e6;
@@ -127,7 +129,9 @@ html, body{
     
 }
 #account-information-store-logo{
-    width: 35px;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
 }
 
 
@@ -154,7 +158,7 @@ html, body{
 }
 
 #store-item-pallet{
-    height: 760px;
+    height: 700px;
 
     overflow: scroll;
 }
@@ -193,7 +197,9 @@ html, body{
 }
 
 #store-logo{
-    width: 170px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }
 
 .store-input-name{
@@ -243,6 +249,7 @@ html, body{
 
 
 .item-label-name{
+    text-transform: capitalize;
     font-size: 1.2rem;
     font-weight: 700;
     margin-top: 10px;
@@ -252,6 +259,7 @@ html, body{
 .item-label-des{
     font-size: .7rem;
     font-weight: 500;
+    min-height: 90px;
     margin-top: 10px;
 }
 

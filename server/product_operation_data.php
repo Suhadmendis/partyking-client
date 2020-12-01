@@ -25,8 +25,14 @@ if ($_GET["Command"] == "generate") {
 if ($_GET["Command"] == "generateProducts") {
    header('Content-Type: application/json');
     
+
+    $sql_store      = "SELECT REF FROM m_store_registration where seller_ref = '" . $_SESSION['REF'] . "'";
+    $resul    = $conn->query($sql_store);
+    $row_store      = $resul->fetch();
+
+
     $objArray = Array();
-    $sql = "SELECT * FROM m_product";
+    $sql = "SELECT * FROM m_product where store_ref = '" . $row_store['REF'] . "'";
     $result = $conn->query($sql);
     $row = $result->fetchAll();
     
@@ -82,9 +88,14 @@ if ($_GET["Command"] == "save_product") {
         // $sql    = "Insert into m_product(REF, name, category_ref, sub_category_ref, condition, brand, model, theme, description, day_price, sell_price, user)values
         // ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "')";
         // $result = $conn->query($sql);
+        
 
-        $sql    = "Insert into m_product(REF, name, category_ref, sub_category_ref, pro_condition, brand, model, theme, description, type, day_price, sell_price, user,image_1)values
-        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['type'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "','" . $_GET['image'] . "')";
+        $sql_store      = "SELECT REF FROM m_store_registration where seller_ref = '" . $_SESSION['REF'] . "'";
+        $resul    = $conn->query($sql_store);
+        $row_store      = $resul->fetch();
+
+        $sql    = "Insert into m_product(REF, name, category_ref, sub_category_ref, pro_condition, brand, model, theme, description, type, day_price, sell_price, user,image_1,store_ref)values
+        ('" . $no1 . "' ,'" . $_GET['name'] . "','" . $_GET['category_ref'] . "','" . $_GET['sub_category_ref'] . "','" . $_GET['condition'] . "','" . $_GET['brand'] . "','" . $_GET['model'] . "','" . $_GET['theme'] . "','" . $_GET['description'] . "','" . $_GET['type'] . "','" . $_GET['day_price'] . "','" . $_GET['sell_price'] . "','" . $CURRENT_USER . "','" . $_GET['image'] . "','" . $row_store['REF'] . "')";
         $result = $conn->query($sql);
 
         // $sql    = "Insert into m_product(REF, name, category_ref,sub_category_ref,condition)values
@@ -168,3 +179,12 @@ if ($_GET["Command"] == "edit_update") {
     
 }
 
+
+if ($_GET["Command"] == "debug") {
+   header('Content-Type: application/json');
+    
+        
+        echo "fdsfg";
+    // print_r($_SESSION);
+    
+}

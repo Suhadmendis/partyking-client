@@ -24,7 +24,7 @@ var app = new Vue({
       street_address: "Street address",
       city: "City",
       postal: "ZIP / Postal",
-      url: "_img/linked_face.webp",
+      url: "",
     },
     PRODUCTS: [],
     product_pallet: false,
@@ -57,6 +57,7 @@ var app = new Vue({
             response.data[2][0].address_1 || "Street Address";
           this.store.city = response.data[2][0].city_name || "City";
           this.store.postal = response.data[2][0].postal || "ZIP / Postal";
+          this.store.url = response.data[2][0].img_logo;
         });
     },
     getPic: function (fb_id) {
@@ -146,12 +147,15 @@ var app = new Vue({
             this.updateMainPanel = "";
           }
         });
-
-      // if (flag == "user_number") {
-      //   this.message_head = "Seller Contact Number";
-      //   this.message = "Please enter the seller Contact Number";
-      //   $("#exampleModal").modal("show");
-      // }
+    },
+    debug: function () {
+      axios
+        .get(
+          "server/product_operation_data.php?Command=debug"
+        )
+        .then((response) => {
+          console.log(response);
+        });
     },
   },
 });
@@ -159,3 +163,41 @@ var app = new Vue({
 
 
 
+$(document).ready(function () {
+  $("#upload-input").change(function () {
+    // $("#myform").change(function () {
+    var fd = new FormData();
+    var files = $("#upload-input")[0].files[0];
+    fd.append("file", files);
+
+    $.ajax({
+      url: "server/image_upload.php?Command=store_logo_upload",
+      dataType: "script",
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: fd,
+      type: "post",
+      success: function (response) {
+        // if (response != 0) {
+        //   $("#img").attr("src", response);
+        //   $(".preview img").show(); // Display image element
+        // } else {
+        //   alert("file not uploaded");
+        console.log(response);
+        if (response.length < 20) {
+          app.store.url = response;
+        } else {
+          alert(response);
+          
+        }
+
+        // document.getElementById("img_path").innerHTML =
+        //   '<img src="uploads/item/books/' + res + '" alt="" width="400" >';
+        // document.getElementById("img_logo").value = res;
+
+        // }
+      },
+    });
+  });
+});

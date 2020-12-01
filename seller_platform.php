@@ -43,6 +43,8 @@ if (isset($_COOKIE[$cookie_name])) {
 
         
     <link rel="stylesheet" href="_css/seller_platform.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
 
 
@@ -85,7 +87,8 @@ if (isset($_COOKIE[$cookie_name])) {
 
                 <div class="store-pill store-pill-active">
                     <div id="account-information-store-logo-box">
-                        <img id="account-information-store-logo" src="_img/logo full site.webp" alt="">
+                        <img id="account-information-store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full site.webp'" alt="" alt="">
+                        <img id="account-information-store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="" alt="">
                     </div>
                     <p class="account-information-store-name">
                         Store Name
@@ -103,7 +106,8 @@ if (isset($_COOKIE[$cookie_name])) {
                 <div class="row">
                     <div class="col-lg-2">
                         <div id="store-logo-area">
-                            <img id="store-logo" src="_img/logo full site.webp" alt="">
+                            <img id="store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full site.webp'" alt="">
+                            <img id="store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="">
                         </div>
                     </div>
                 
@@ -118,7 +122,7 @@ if (isset($_COOKIE[$cookie_name])) {
                 
                 
                         <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
-                            Upload
+                            Upload Logo
                             <input id="upload-input" type="file" name="file" />
                         </div>
                     </div>
@@ -159,7 +163,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <div class="store-item-image-area">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <img class="store-item-image" src="_img/products/pro0001.webp" alt="">
+                                    <img class="store-item-image" v-bind:src="'uploads/1/products/' + product.image_1" alt="">
                                 </div>
                                 <div class="col-lg-9">
                                     <div class="store-item-details">
@@ -183,10 +187,10 @@ if (isset($_COOKIE[$cookie_name])) {
                                             {{ product.description }}
                                         </p>
                                         <div id="item-label-bottom">
-                                            <p class="item-label-price">
+                                            <p class="item-label-price" v-if="product.type == 'Sell' || product.type == 'Rent or Sell'">
                                                 Selling Price - Rs {{ product.sell_price }}
                                             </p>
-                                            <p class="item-label-price">
+                                            <p class="item-label-price" v-if="product.type == 'Rent' || product.type == 'Rent or Sell'">
                                                 Day - Rs {{ product.day_price }}
                                             </p>
                                             <a href="update_product.html">
@@ -243,9 +247,9 @@ if (isset($_COOKIE[$cookie_name])) {
     
     <script src="_js/seller_platform.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>

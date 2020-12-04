@@ -150,11 +150,16 @@ var app = new Vue({
     },
     debug: function () {
       axios
-        .get(
-          "server/product_operation_data.php?Command=debug"
-        )
+        .get("server/product_operation_data.php?Command=debug")
         .then((response) => {
           console.log(response);
+        });
+    },
+    logout: function () {
+      axios
+        .get("CheckUsers.php?Command=logout")
+        .then((response) => {
+          location.reload("seller_auth.php");
         });
     },
   },
@@ -179,24 +184,11 @@ $(document).ready(function () {
       data: fd,
       type: "post",
       success: function (response) {
-        // if (response != 0) {
-        //   $("#img").attr("src", response);
-        //   $(".preview img").show(); // Display image element
-        // } else {
-        //   alert("file not uploaded");
-        console.log(response);
         if (response.length < 20) {
           app.store.url = response;
         } else {
           alert(response);
-          
         }
-
-        // document.getElementById("img_path").innerHTML =
-        //   '<img src="uploads/item/books/' + res + '" alt="" width="400" >';
-        // document.getElementById("img_logo").value = res;
-
-        // }
       },
     });
   });

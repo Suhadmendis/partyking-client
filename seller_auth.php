@@ -41,6 +41,9 @@ if (isset($_COOKIE[$cookie_name])) {
         integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
         crossorigin="anonymous"></script>
 
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="_css/seller_auth.css">
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
 
@@ -55,63 +58,8 @@ if (isset($_COOKIE[$cookie_name])) {
 
     <div class="container-fluid" id="app">
         <div class="row">
-            <div class="col-lg-3" id="seller-information-palet" v-show="information_pallet">
-                <div id="seller-information-palet-logo-box">
-                    <img id="seller-information-palet-logo" src="_img/logo full site.webp" alt="">
-                </div>
-                <div id="seller-information-palet-benefits">
-                    <p id="seller-information-palet-benefits-text-head">
-                        Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry.
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard Dummy text ever
-                        since the 1500s
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Text ever since the 1500s, when an unknown printer took a galley of
-                        Type and scrambled it to make a type specimen book.
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's
-                    </p>
-                </div>
-            </div>
 
-            <div class="col-md-3" id="seller-information-palet" v-show="!information_pallet">
-                <div id="new-seller-information-palet-logo-box">
-                    <img id="new-seller-information-palet-logo" src="_img/logo full site.webp" alt="">
-                </div>
-                <div id="new-seller-information-palet-user-box">
-                    <img id="new-seller-information-palet-user" v-bind:src="user.url" alt="">
-                </div>
-                <div id="new-seller-information-palet-benefits">
-
-                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name</p>
-                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name != ''">
-                        {{ user.full_name }}</p>
-
-                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
-                    <!--    Email: {{ user.email }}-->
-                    <!--</p>-->
-                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
-                    <!--    Contact Number: {{ user.contact_number }}-->
-                    <!--</p>-->
-                    <!--<p class="new-seller-information-palet-benefits-text-des">-->
-                    <!--    Password: Valid-->
-                    <!--</p>-->
-
-                </div>
-            </div>
-
-
-            <div class="col-lg-9" id="seller-input-palet">
+            <div class="col-lg-8 order-lg-12" id="seller-input-palet">
                 <div id="input-box">
                     <p class="input-text-head">
                         Login to your affiliate platform
@@ -154,6 +102,54 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
             </div>
+
+            <div class="col-lg-4 order-lg-1" id="seller-information-palet" v-show="information_pallet">
+                <div id="seller-information-palet-logo-box">
+                    <img id="seller-information-palet-logo" src="_img/logo full site.webp" alt="">
+                </div>
+                <div id="seller-information-palet-benefits">
+                    <p id="seller-information-palet-benefits-text-head">
+                        Lorem Ipsum is simply dummy text of the
+                        printing and typesetting industry.
+                    </p>
+                    <p class="seller-information-palet-benefits-text-des">
+                        Lorem Ipsum has been the industry's standard Dummy text ever
+                        since the 1500s
+                    </p>
+                    <p class="seller-information-palet-benefits-text-des">
+                        Lorem Ipsum has been the industry's standard
+                    </p>
+                    <p class="seller-information-palet-benefits-text-des">
+                        Text ever since the 1500s, when an unknown printer took a galley of
+                        Type and scrambled it to make a type specimen book.
+                    </p>
+                    <p class="seller-information-palet-benefits-text-des">
+                        Lorem Ipsum has been the industry's standard
+                    </p>
+                    <p class="seller-information-palet-benefits-text-des">
+                        Lorem Ipsum has been the industry's
+                    </p>
+                </div>
+            </div>
+
+
+            
+            <div class="col-lg-4 order-lg-1 anchor" id="seller-information-palet" v-show="!information_pallet">
+                <div id="new-seller-information-palet-logo-box">
+                    <img id="new-seller-information-palet-logo" src="_img/logo full site.webp" alt="">
+                </div>
+                <div id="new-seller-information-palet-user-box">
+                    <img id="new-seller-information-palet-user" v-bind:src="user.url" alt="">
+                </div>
+                <div id="new-seller-information-palet-benefits">
+
+                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name</p>
+                    <p id="new-seller-information-palet-benefits-text-head" v-if="user.full_name != ''">
+                        {{ user.full_name }}</p>
+                </div>
+            </div>
+
+
         </div>
 
 
@@ -246,9 +242,6 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
 
-
-
-
     <script src="_js/seller_auth.js"></script>
 
 
@@ -257,9 +250,9 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
         crossorigin="anonymous"></script>

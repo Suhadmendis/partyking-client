@@ -3,6 +3,30 @@ html, body{
     height:100%;
     font-family: 'Montserrat', sans-serif;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+     background: #cfcfcf; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+
+  background:  #aaaaaa;
+}
+
+
 #seller-main-section{
     
 }
@@ -256,6 +280,61 @@ html, body{
 
 
 /*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet */
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+    
+    
+    #seller-input-palet{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    #input-box{
+        width: 400px;
+        height: 400px;
+        padding: 30px;
+    }
+
+
+    #seller-register-text-box{
+        float: left;
+        width: 100%;
+    }
+    #seller-register-text {
+        margin-top: 12px;
+        margin-left: 0px;
+        font-size: 13px;
+        color: rgba(29, 44, 65, 1);
+    }
+
+    #seller-register-text-box{
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #seller-information-palet{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f3f4f5;
+        height: 100vh;
+    }
+
+    #new-seller-information-palet-logo{
+        width: 100px;
+        margin-top: 0px;
+        
+    }
+
+
 }
 
 

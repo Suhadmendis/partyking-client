@@ -76,7 +76,15 @@ var app = new Vue({
         )
         .then((response) => {
           if (response.data == "ok") {
-            location.reload();
+            $("html, body").animate(
+              {
+                scrollTop: $(".anchor").offset().top,
+              },
+              1000
+            );
+            setInterval(function () {
+              location.reload();
+            }, 2000);
           }
         });
     },

@@ -8,6 +8,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
     
 }else{
+    
     header('Location: ' . "seller_auth.php");
 }
 
@@ -53,11 +54,11 @@ if (isset($_COOKIE[$cookie_name])) {
 </head>
 
 <body>
-
     <div class="container-fluid" id="app">
         <div class="row">
 
             <div class="col-lg-2 nopadding" id="seller-information-palet">
+            <br>
                 <div id="account-information-palet-logo-box">
                     <img id="account-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
@@ -66,10 +67,11 @@ if (isset($_COOKIE[$cookie_name])) {
                 </div>
                 <div id="account-information-palet-benefits">
                 
-                    <p id="account-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name</p>
+                    <p id="account-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name<i class="fas fa-sign-out-alt edit-icon-other" @click="logout();"></i></p>
                     <p id="account-information-palet-benefits-text-head" v-if="user.full_name != ''">
-                        {{ user.full_name }}</p>
-                
+                        {{ user.full_name }}<i class="fas fa-sign-out-alt edit-icon-other" @click="logout();"></i></p>
+
+                    
                     <!-- <p class="account-information-palet-benefits-text-des">
                         Email:
                     </p>
@@ -106,14 +108,15 @@ if (isset($_COOKIE[$cookie_name])) {
             <!-- <div class="col-lg-10 nopadding"> -->
 <br>
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-sm-2">
                         <div id="store-logo-area">
                             <img id="store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full site.webp'" alt="">
                             <img id="store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="">
                         </div>
+                        
                     </div>
                 
-                    <div class="col-lg-5">
+                    <div class="col-sm-5">
                 
                         <p class="store-input-name">
                             {{ store.name }} <i class="fas fa-pen edit-icon-name" @click="edit('store_name');"></i>
@@ -128,7 +131,7 @@ if (isset($_COOKIE[$cookie_name])) {
                             <input id="upload-input" type="file" name="file" />
                         </div>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-sm-5">
                 
                         <p class="store-input-name-email">
                             {{ store.email }} <i class="fas fa-pen edit-icon-other" @click="edit('store_email');"></i>
@@ -150,7 +153,7 @@ if (isset($_COOKIE[$cookie_name])) {
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12" id="add-button-pallet">
                         
                         <a href="add_product.html">
                             <button class="seller-button">Add Product</button>

@@ -4,6 +4,29 @@ html, body{
     font-family: 'Montserrat', sans-serif;
 }
 
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+     background: #cfcfcf; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+
+  background:  #aaaaaa;
+}
+
+
 #seller-information-palet{
     display: flex;
     flex-direction: column;
@@ -72,7 +95,7 @@ html, body{
 }
 
 #account-information-palet-benefits-text-head{
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     margin-right: 1rem;
     font-size: .9rem;
     font-weight: 700;
@@ -90,6 +113,7 @@ html, body{
     font-weight: 600;
 }
 .account-information-palet-benefits-text-subdes{
+    margin-left: 1.3rem;
     text-align: center;
     font-size: .8rem;
     font-weight: 500;
@@ -155,8 +179,7 @@ html, body{
 }
 
 #store-item-pallet{
-    height: 670px;
-
+    height: 1310px;
     overflow: scroll;
 }
 
@@ -425,17 +448,17 @@ html, body{
 .edit-icon-name{
     margin-left: 10px;
     font-size: 18px;
-    opacity: .5;
+    opacity: .2;
 }
 .edit-icon-tagline{
     margin-left: 10px;
     font-size: 16px;
-    opacity: .5;
+    opacity: .2;
 }
 .edit-icon-other{
     margin-left: 10px;
     font-size: 12px;
-    opacity: .5;
+    opacity: .2;
 }
 
 
@@ -453,7 +476,12 @@ html, body{
 
 /*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet *//*-palet */
 
-
+@media only screen and (max-width: 2000px) {
+    #store-item-pallet{
+        height: 660px;
+        overflow: scroll;
+    }
+}
 
 
 @media only screen and (max-width: 1500px) {
@@ -517,14 +545,15 @@ html, body{
 @media only screen and (max-width: 1100px) {
 
     #store-logo{
-        width: 130px;
-        height: 130px;
+        width: 90px;
+        height: 90px;
     }
 
 
     .seller-button{
-        width: 130px;
-        padding: 9px 20px;        
+        width: 90px;
+        padding: 9px 9px; 
+        font-size: 10px;       
     }
 
 
@@ -587,6 +616,14 @@ html, body{
 
 
 @media only screen and (max-width: 991px) {
+    .account-information-store-name{
+        margin-left: 0.9rem;
+        margin-right: 0.9rem;
+        font-size: 1rem;
+        margin-top: 12px;
+        font-weight: 600;
+    }
+
     #seller-information-palet{
         display: flex;
         flex-direction: unset;
@@ -617,10 +654,87 @@ html, body{
 
 
 
+    .item-label-des{
+        font-size: .8rem;
+        font-weight: 500;
+        min-height: 90px;
+        margin-top: 10px;
+    }
 
     #store-item-pallet{
         overflow: inherit;
         margin-bottom: 20px;
     }
+
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .account-information-store-name{
+        margin-left: 0.9rem;
+        margin-right: 0.9rem;
+        font-size: 1rem;
+        margin-top: 12px;
+        font-weight: 600;
+    }
+
+    #store-input-palet{
+        text-align: center;
+    }
+
+    #store-logo{
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+
+    .store-input-name{
+        margin-top: 50px;
+        margin-left: 10px;
+    }
+
+    .store-input-name-tagline{
+        font-size: .8rem;
+        margin-bottom: 30px;
+        margin-left: 10px;
+    }
+    
+    #upload-pallet{
+        margin-bottom: 30px;
+    }
+    .store-input-name-email{
+        margin-top: 20px;
+        margin-left: 10px;
+    }
+
+    .store-input-name-contact-number{
+        margin-left: 10px;
+    }
+
+    .store-input-name-street-address{
+        margin-left: 10px;
+    }
+
+    .store-input-name-city{
+        margin-left: 10px;
+    }
+
+    .store-input-name-postal{
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    #add-button-pallet{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #store-item-pallet{
+        text-align: left;
+    }
+
+    
 
 }

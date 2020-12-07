@@ -21,6 +21,20 @@ if ($_GET["Command"] == "generate") {
     
 }
 
+if ($_GET["Command"] == "getProduct") {
+   header('Content-Type: application/json');
+    
+    $objArray = Array();
+    $sql = "SELECT * FROM m_product where REF = '" . $_GET['REF'] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetch();
+
+    array_push($objArray,$row);
+
+    echo json_encode($objArray);
+    
+}
+
 
 if ($_GET["Command"] == "generateProducts") {
    header('Content-Type: application/json');

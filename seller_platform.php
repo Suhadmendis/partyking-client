@@ -125,7 +125,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <p class="store-input-name-tagline">
                             {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
                         </p>
-                        <a href="add_product.html">
+                        <a href="add_product.php">
                             <button  style="background-color:  #1D2C41;" class="file btn btn-sm btn-primary">Add Product</button>
                         </a>
                 
@@ -226,7 +226,7 @@ if (isset($_COOKIE[$cookie_name])) {
                                             <p class="item-label-price" v-if="product.type == 'Rent' || product.type == 'Rent or Sell'">
                                                 Day - Rs {{ product.day_price }}
                                             </p>
-                                            <a href="update_product.html">
+                                            <a v-bind:href="'update_product.php?REF=' + product.REF">
                                                 <button class="update-button">Update</button>
                                             </a>
                                             

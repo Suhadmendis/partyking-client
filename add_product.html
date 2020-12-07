@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 
@@ -48,12 +49,20 @@
     <div class="container-fluid" id="app">
         <div class="row">
             <div class="col-md-12">
+                <a href="seller_platform.php">
+                    <button class="btn btn-secondary">Back</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
                 <div id="head-topic">
-                    <h2>Add Product</h2>
+                    <h2 style="color:  #1D2C41;">Add Your Product</h2>
                 </div>
             </div>
         </div>
-        
+        <br>
 
         <div class="row">
             <div class="col-lg-4">
@@ -108,15 +117,18 @@
                         </div>
                        
                         <label for="" class="seller-input-palet-text-label"> Brand: </label>
-                        <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.brand">
-                        <br><br>
+                        <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.brand"> 
+                        <p class="seller-input-palet-text-box-note"><b>Optional:</b> You can leave this empty.</p>
+                        <br>
 
                         <label for="" class="seller-input-palet-text-label"> Model: </label>
                         <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.model">
-                        <br><br>
+                        <p class="seller-input-palet-text-box-note"><b>Optional:</b> You can leave this empty.</p>
+                        <br>
 
                         <label for="" class="seller-input-palet-text-label"> Theme: </label>
                         <input type="text" class="seller-input-palet-text-box col-lg-3" v-model="PRODUCT.theme">
+                        <p class="seller-input-palet-text-box-note"><b>Optional:</b> You can leave this empty.</p>
                         <br><br>
 
                         <label for="" class="seller-input-palet-text-label">Description: </label>
@@ -132,12 +144,12 @@
                             </div>
                         </div>                    
 
-                        <label for="" class="seller-input-palet-text-label"> Day: </label>
-                        <input type="number" class="seller-input-palet-text-box" :disabled="selected_type == 'Sell'" v-model="PRODUCT.day_price">
+                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Sell'"> Day: </label>
+                        <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Sell'"  v-model="PRODUCT.day_price">
                         <br><br>
 
-                        <label for="" class="seller-input-palet-text-label"> Sell: </label>
-                        <input type="number" class="seller-input-palet-text-box" :disabled="selected_type == 'Rent'" v-model="PRODUCT.sell_price">
+                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Rent'"> Sell: </label>
+                        <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Rent'" v-model="PRODUCT.sell_price">
                         <br><br>
 
                         <button @click="save_product()" class="btn btn-secondary">Save</button>
@@ -149,9 +161,38 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ message_head }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div> -->
+                    <div class="modal-body">
+                        <p>{{ message }}</p>
+                        <div v-if="icon_flag" style="text-align: center;">
+                            <br>
+                            <i class="far fa-check-circle" id="check-icon"></i>
+                        </div>
+        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
 
 
+    
 
     <script>
         window.fbAsyncInit = function () {

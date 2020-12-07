@@ -63,20 +63,19 @@ if (isset($_COOKIE[$cookie_name])) {
             <div class="col-lg-8 order-lg-12" id="seller-input-palet">
                 <div id="input-box">
                     <p class="input-text-head">
-                        Login to your affiliate platform
-                        Become a Seller
+                        Login to your Party King Account.
                     </p>
 
 
                     <label for="" class="seller-input-palet-text-label">Email: </label>
-                    <input type="text" class="seller-input-palet-text-box">
+                    <input type="text" class="seller-input-palet-text-box" v-model="user.email">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">Password: </label>
-                    <input type="password" class="seller-input-palet-text-box">
+                    <input type="password" class="seller-input-palet-text-box" v-model="user.password">
                     <label for="" id="seller-input-palet-forgot-password">Forgot password? </label>
 
                     <div id="seller-input-palet-bottom">
-                        <button class="seller-button">
+                        <button class="seller-button" @click="login_user_web()">
                             LOGIN
                         </button>
                         <div id="seller-register-text-box">

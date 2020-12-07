@@ -17,7 +17,12 @@ html, body{
 #primary-upload-image-area{
     padding: 10px;
     width: 100%;
-    
+
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.2);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.2);
+    box-shadow:0 0 20px rgba(0, 0, 0, 0.2);
+
+    transition: box-shadow 0.1s ease-in-out;
     /* background-color: saddlebrown; */
 }
 #primary-upload-image{
@@ -71,6 +76,11 @@ html, body{
     background-color: rgba(29, 44, 65, .01);
 }
 
+.seller-input-palet-text-box-note{
+    font-size: 13px;
+    font-weight: 400;
+}
+
 
 .seller-input-palet-des-box{
     outline: none;
@@ -99,4 +109,16 @@ html, body{
 
 #upload-pallet{
     width: 100%;
+}
+
+.dropdown-item{
+    cursor: pointer;
+}
+
+
+
+#check-icon{
+    
+    font-size: 50px;
+    color: #1D2C41;
 }

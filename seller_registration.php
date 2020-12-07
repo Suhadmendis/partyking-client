@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <title>Product</title>
     <meta charset="utf-8">
+    <link rel="icon" href="_img/logo full site icon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -36,7 +37,6 @@
 <body>
 
 
-
     <div class="container-fluid" id="app">
         <div class="row">
             <div class="col-lg-4 information-palet" id="seller-information-palet"  v-show="information_pallet">
@@ -44,27 +44,33 @@
                     <img id="seller-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
                 <div id="seller-information-palet-benefits">
+                   
                     <p id="seller-information-palet-benefits-text-head">
-                        Lorem Ipsum is simply dummy text of the
-                        printing and typesetting industry.
+                        Why Party King
                     </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard Dummy text ever
-                        since the 1500s
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Text ever since the 1500s, when an unknown printer took a galley of
-                        Type and scrambled it to make a type specimen book.
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's standard
-                    </p>
-                    <p class="seller-information-palet-benefits-text-des">
-                        Lorem Ipsum has been the industry's
-                    </p>
+
+                    
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">Customer will solve your storage problem by making back to back renting. </li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">Wider reach to audience and speedy way to approach markets.</li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">You can easily display all your products within 2-3 clicks.</li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">High chances of customers searching on your store.</li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">Party King Offers Seller Flexibility to promote their products.</li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">Get fast and more stable results.</li>
+                    </ul>
+                    <ul>
+                        <li class="seller-information-palet-benefits-text-des">The Sky’s the Limit on Product Sales at Party King.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -99,28 +105,27 @@
             <div class="col-lg-8" id="seller-input-palet-reg">
                 <div id="input-box">
                     <p class="input-text-head">
-                        Login to your affiliate platform
-                        Become a Seller
+                        Create your account and gain access to become a seller.
                     </p>
 
 
                     <label for="" class="seller-input-palet-text-label">Full Name: </label>
-                    <input type="text" class="seller-input-palet-text-box" v-model="user.full_name">
+                    <input type="text" class="seller-input-palet-text-box" v-model="user.full_name" @click="change_panel()">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">Email: </label>
-                    <input type="text" class="seller-input-palet-text-box" v-model="user.email">
+                    <input type="text" class="seller-input-palet-text-box" v-model="user.email" @click="change_panel()">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">Contact Number: </label>
-                    <input type="number" class="seller-input-palet-text-box" v-model="user.contact_number">
+                    <input type="number" class="seller-input-palet-text-box" v-model="user.contact_number" @click="change_panel()">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">New Password: </label>
-                    <input type="password" class="seller-input-palet-text-box" v-model="user.password">
+                    <input type="password" class="seller-input-palet-text-box" v-model="user.password" @click="change_panel()">
 
 
                     <div id="seller-input-palet-bottom">
                         <!-- <a href="seller_thank_you.html"> -->
                             <button class="seller-button" @click="register()">
-                                Registration
+                                Register
                             </button>
                         <!-- </a> -->
 

@@ -1,6 +1,9 @@
 var app = new Vue({
   el: "#app",
   data: {
+    message: "",
+    message_head: "",
+    icon_flag: false,
     PRODUCT: {
       name: "",
       category_ref: "",
@@ -28,6 +31,26 @@ var app = new Vue({
   },
   mounted: function () {
     this.generate();
+  },
+  watch: {
+    "PRODUCT.day_price": function (newQuestion, oldQuestion) {
+      if (newQuestion < 0) {
+        this.PRODUCT.day_price = parseInt(newQuestion) * -1;
+        console.log(parseInt(newQuestion));
+      } else {
+        this.PRODUCT.day_price = parseInt(newQuestion);
+      }
+      // return parseInt(newQuestion);
+    },
+    "PRODUCT.sell_price": function (newQuestion, oldQuestion) {
+      if (newQuestion < 0) {
+        this.PRODUCT.sell_price = parseInt(newQuestion) * -1;
+        console.log(parseInt(newQuestion));
+      } else {
+        this.PRODUCT.sell_price = parseInt(newQuestion);
+      }
+      // return parseInt(newQuestion);
+    },
   },
   methods: {
     generate: function () {
@@ -84,53 +107,66 @@ var app = new Vue({
     },
     save_product: function () {
       if (this.PRODUCT.name == "") {
-        alert("Name is not Entered");
+        this.message = "Name is not Entered";
+        $("#exampleModal").modal("show");
         return;
+        // alert("Name is not Entered");
       }
       if (this.PRODUCT.pro_image_pass == 0) {
-        alert("Please insert an image");
-        return;
+          this.message = "Please insert an image";
+          $("#exampleModal").modal("show");
+          return;
       }
       if (this.PRODUCT.category_ref == "") {
-        alert("Category is not Entered");
-        return;
+          this.message = "Category is not Entered";
+          $("#exampleModal").modal("show");
+          return;
       }
       if (this.PRODUCT.sub_category_ref == "") {
-        alert("Sub Category is not Entered");
-        return;
+          this.message = "Sub Category is not Entered";
+          $("#exampleModal").modal("show");
+          return;
       }
       if (this.PRODUCT.condition == "") {
-        alert("Condition is not Entered");
-        return;
+          this.message = "Condition is not Entered";
+          $("#exampleModal").modal("show");
+          return;
       }
       if (this.PRODUCT.description == "") {
-        alert("Description is not Entered");
-        return;
+          this.message = "Description is not Entered";
+          $("#exampleModal").modal("show");
+          return;
       }
       if (this.PRODUCT.type == "") {
-        alert("Type is not Entered");
-        return;
+          this.message = "Type is not Entered";
+          $("#exampleModal").modal("show");
+          return;
       }
 
       if (this.selected_type == "Rent") {
         if (this.PRODUCT.day_price == "") {
-          alert("Day Price is not Entered");
+            this.message = "Day Price is not Entered";
+          $("#exampleModal").modal("show");
           return;
         }
       }
+
       if (this.selected_type == "Sell") {
         if (this.PRODUCT.sell_price == "") {
-          alert("Sell Price is not Entered");
+            this.message = "Sell Price is not Entered";
+          $("#exampleModal").modal("show");
           return;
         }
       }
       if (this.selected_type == "Rent or Sell") {
         if (this.PRODUCT.day_price == "") {
-          alert("Day Price is not Entered");
+            this.message = "Day Price is not Entered";
+          $("#exampleModal").modal("show");
           return;
         }
         if (this.PRODUCT.sell_price == "") {
-          alert("Sell Price is not Entered");
+            this.message = "Sell Price is not Entered";
+          $("#exampleModal").modal("show");
           return;
         }
       }
@@ -177,6 +213,11 @@ var app = new Vue({
             this.PRODUCT.type = "Rent";
             this.PRODUCT.day_price = "";
             this.PRODUCT.sell_price = "";
+            this.selected_category= { REF: "", category_name: "Category" };
+            this.selected_subCategory= { REF: "", name: "Sub Category" };
+            this.selected_condition= "Condition";
+            this.selected_type= "Rent",
+              (this.PRODUCT.pro_image = "_img/imageupload.jpg");
           }
         });
     },
@@ -194,9 +235,13 @@ var app = new Vue({
         data: fd,
         type: "post",
         success: function (response) {
-          alert("Saved");
+           app.message = "Saved";
+           app.icon_flag = true;
+
+           $("#exampleModal").modal("show");
+          
           app.PRODUCT.pro_image_pass = 0;
-          app.PRODUCT.pro_image = "_img/imageupload.png";
+          app.PRODUCT.pro_image = "_img/imageupload.jpg";
         },
       });
     },
@@ -236,7 +281,9 @@ $(document).ready(function () {
           app.PRODUCT.pro_image_pass = 1;
 
         }else{
-          alert(response);
+          app.message = response;
+          
+          $("#exampleModal").modal("show");
           app.PRODUCT.pro_image_pass = 0;
         }
 

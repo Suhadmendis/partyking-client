@@ -1,11 +1,14 @@
 var app = new Vue({
   el: "#app",
   data: {
-    information_pallet: false,
+    information_pallet: true,
     user: { full_name: "", email: "", contact_number: "", password: "" },
     message: "",
   },
   methods: {
+    change_panel: function () {
+      this.information_pallet = false;
+    },
     register: function () {
       axios
         .get(

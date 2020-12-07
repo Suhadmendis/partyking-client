@@ -127,43 +127,46 @@ if ($_GET["Command"] == "edit_update") {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
 
+
+        $value = str_replace("'","\'",$_GET['value']);
+
         if ($_GET['flag'] == "user_number") {
-            $sql = "update m_registration set tel_1 = '" . $_GET['value'] . "' where REF = '" . $_GET['REF'] . "'";
+            $sql = "update m_registration set tel_1 = '" . $value . "' where REF = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_name") {
-            $sql = "update m_store_registration set name = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set name = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "tagline") {
-            $sql = "update m_store_registration set tagline = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set tagline = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_email") {
-            $sql = "update m_store_registration set email = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set email = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_number") {
-            $sql = "update m_store_registration set tel_1 = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set tel_1 = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_address") {
-            $sql = "update m_store_registration set address_1 = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set address_1 = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_city") {
-            $sql = "update m_store_registration set city_name = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set city_name = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 
         if ($_GET['flag'] == "store_postal") {
-            $sql = "update m_store_registration set postal = '" . $_GET['value'] . "' where seller_ref = '" . $_GET['REF'] . "'";
+            $sql = "update m_store_registration set postal = '" . $value . "' where seller_ref = '" . $_GET['REF'] . "'";
             $result = $conn->query($sql);
         }
 

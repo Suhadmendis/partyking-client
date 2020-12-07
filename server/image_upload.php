@@ -14,7 +14,7 @@ if ($_GET["Command"] == "upload") {
     
     $uniq = uniqid();
     
-    $filename =  $uniq.'.'.$filename[1];
+    $filename =  $uniq.'.'.$filename[sizeof($filename)-1];
     
 
     $target_file = $target_dir . $filename;
@@ -77,7 +77,7 @@ if ($_GET["Command"] == "post_to_hdd") {
     
     $uniq = uniqid();
     
-    $filename =  $uniq.'.'.$filename[1];
+    $filename =  $uniq.'.'.$filename[sizeof($filename)-1];
     
 
     $target_file = $target_dir . $filename;
@@ -171,7 +171,7 @@ if ($_GET["Command"] == "store_logo_upload") {
     
     $uniq = uniqid();
     
-    $filename =  $uniq.'.'.$filename[1];
+    $filename =  $uniq.'.'.$filename[sizeof($filename)-1];
     
 
     $target_file = $target_dir . $filename;
@@ -255,7 +255,7 @@ if ($_GET["Command"] == "store_logo_post_to_hdd") {
     
     $uniq = uniqid();
     
-    $filename =  $uniq.'.'.$filename[1];
+    $filename =  $uniq.'.'.$filename[sizeof($filename)-1];
     
 
     $target_file = $target_dir . $filename;

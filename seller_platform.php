@@ -57,7 +57,7 @@ if (isset($_COOKIE[$cookie_name])) {
 <body>
     <div class="container-fluid" id="app">
         <div class="row">
-
+        
             <div class="col-lg-2 nopadding" id="seller-information-palet">
             <br>
                 <div id="account-information-palet-logo-box">
@@ -125,12 +125,11 @@ if (isset($_COOKIE[$cookie_name])) {
                         <p class="store-input-name-tagline">
                             {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
                         </p>
+                        <a href="add_product.html">
+                            <button  style="background-color:  #1D2C41;" class="file btn btn-sm btn-primary">Add Product</button>
+                        </a>
                 
-                
-                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
-                            Upload Logo
-                            <input id="upload-input" type="file" name="file" />
-                        </div>
+                        
                     </div>
                     <div class="col-sm-5">
                 
@@ -155,10 +154,11 @@ if (isset($_COOKIE[$cookie_name])) {
 
                 <div class="row">
                     <div class="col-md-12" id="add-button-pallet">
+                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
+                            Upload Logo
+                            <input id="upload-input" type="file" name="file" />
+                        </div>
                         
-                        <a href="add_product.html">
-                            <button class="seller-button">Add Product</button>
-                        </a>
 
                     </div>
                 </div>
@@ -179,16 +179,43 @@ if (isset($_COOKIE[$cookie_name])) {
                                             <span class="badge badge-secondary item-type-badge">{{ product.type }}</span>
                                         </p>
                                         
-                                        <p class="item-label-3type">
-                                            {{ product.pro_condition }}
+                                        <p class="item-label">
+                                            Condition: {{ product.pro_condition }}
                                         </p>
-                                        <p class="item-label-3type">
+                                        
+
+                                        <p class="item-label-3type-dot" v-if="product.brand == ''">&nbsp;
+                                        </p>
+                                        <p class="item-label-3type-dot" v-if="product.brand != ''">
+                                            Brand:
+                                        </p>
+                                        <p class="item-label-3type-dot" v-if="product.model == ''">&nbsp;
+                                        </p>
+                                        <p class="item-label-3type-dot" v-if="product.model != ''">
+                                            Model:
+                                        </p>
+                                        
+                                        <p class="item-label-3type-dot" v-if="product.theme == ''">&nbsp;
+                                        </p>
+                                        <p class="item-label-3type-dot" v-if="product.theme != ''">
+                                            Theme:
+                                        </p>
+
+                                       
+                                        <p class="item-label-3type" v-if="product.brand == ''">&nbsp;</p>
+                                        <p class="item-label-3type" v-if="product.brand != ''">
                                             {{ product.brand }}
                                         </p>
-                                        <p class="item-label-3type">
+                                        <p class="item-label-3type" v-if="product.model == ''">&nbsp;</p>
+                                        <p class="item-label-3type" v-if="product.model != ''">
+                                            {{ product.model }}
+                                        </p>
+                                        <p class="item-label-3type" v-if="product.theme == ''">&nbsp;</p>
+                                        <p class="item-label-3type" v-if="product.theme != ''">
                                             {{ product.theme }}
                                         </p>
 
+                                        
                                         <p class="item-label-des">
                                             {{ product.description }}
                                         </p>
@@ -233,7 +260,8 @@ if (isset($_COOKIE[$cookie_name])) {
                         {{ message }}
                         <br>
                         <br>
-                        <input type="text" class="seller-input-palet-text-box" v-model="updateMainPanel" :placeholder="editplaceholder">
+                        <input type="text" id="updateMainPanel" class="seller-input-palet-text-box" v-model="updateMainPanel" :placeholder="editplaceholder">
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" @click="edit_update(editflag)">Update</button>
@@ -242,10 +270,12 @@ if (isset($_COOKIE[$cookie_name])) {
             </div>
         </div>
 
+        
 
 
 
 
+<i class="far fa-check-circle"></i>
 
 
     </div>

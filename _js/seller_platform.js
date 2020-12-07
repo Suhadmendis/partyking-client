@@ -9,7 +9,7 @@ var app = new Vue({
     updateMainPanel: "",
     user: {
       REF: "",
-      full_name: "Suhad Mendis",
+      full_name: "",
       email: "suhad.a.mendis@gmail.com",
       password: "",
       url: "_img/linked_face.webp",
@@ -40,9 +40,9 @@ var app = new Vue({
           this.PRODUCTS = response.data[0];
           this.getPic(response.data[1][0].fb_id);
           this.user.full_name =
-            response.data[1][0].first_name +
+            response.data[1][0].first_name || "" +
             " " +
-            response.data[1][0].last_name;
+            response.data[1][0].last_name || "";
           this.user.REF = response.data[1][0].REF;
           this.user.contact_number = response.data[1][0].tel_1 || "077XXXXXXX";
           this.product_pallet = true;
@@ -73,6 +73,8 @@ var app = new Vue({
         });
     },
     edit: function (flag) {
+      this.updateMainPanel = "";
+     
       if (flag == "user_number") {
         this.message_head = "Seller Contact Number";
         this.message = "Please enter the seller Contact Number";
@@ -128,8 +130,9 @@ var app = new Vue({
         this.editplaceholder = "10350";
         $("#exampleModal").modal("show");
       }
-
+      
       this.editflag = flag;
+      
     },
     edit_update: function (editflag) {
       axios

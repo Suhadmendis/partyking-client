@@ -63,7 +63,7 @@ var app = new Vue({
             this.message = "Please Register";
             $("#exampleModal").modal("hide");
             this.login_user_fb();
-          }else{
+          } else {
             this.message = "Error";
           }
         });
@@ -85,6 +85,22 @@ var app = new Vue({
             setInterval(function () {
               location.reload();
             }, 2000);
+          }
+        });
+    },
+    login_user_web: function () {
+      axios
+        .get(
+          "server/seller_operation_data.php?Command=login_user_web&email=" +
+            this.user.email +
+            "&password=" +
+            this.user.password
+        )
+        .then((response) => {
+          if (response.data == "ok") {
+            location.reload();
+          }else{
+            alert("error");
           }
         });
     },

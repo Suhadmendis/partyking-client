@@ -43,14 +43,11 @@ session_start();
                     <h1 id="thank-you-text">Thank you!</h1>
                     <br>
                     <br>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the industry's standard dummy text ever since the 1500s, when an unknown printer
-                        took a galley of type and scrambled of type and scrambled of type and scrambled of type and scrambled it to make a type specimen book.</p>
+                    <p>Thank you for choosing us. We are happy to let you know that you are among the first 60 to 110 sellers. This is the best opportunity for you to increase your sales. Make sure to let other fellow sellers aware about our website.</p>
                 
-                    <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
-                        essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                        sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-                        software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>Get ready to send your sales shoot over the roof!</p>
+                    <p>Many tricks and method will also be shared among each seller.</p>
+
                 </div>
 
                 <div id="seller-relationship-palet-box">
@@ -75,7 +72,19 @@ session_start();
                             <img class="seller-relationship-palet-image-user" src="_img/linked_face.PNG" alt="">
                             <p class="seller-relationship-palet-text"><?php echo $_SESSION['CURRENT_USER']; ?></p>
                         </div>
+                        
                 </div>
+
+                <div id="seller-goto-btn">
+                        <a href="seller_auth.php">
+                            <button class="goto-btn">
+                                Go
+                            </button>
+                        </a>
+                        
+                </div>
+
+                <br><br>
                 
             </div>
        </div>

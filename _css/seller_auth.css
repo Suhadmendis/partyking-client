@@ -30,6 +30,12 @@ html, body{
 #seller-main-section{
     
 }
+
+
+.information-palet{
+    display: block;
+}
+
 #seller-information-palet{
     display: flex;
     flex-direction: column;
@@ -38,6 +44,14 @@ html, body{
     background-color: #f3f4f5;
     height: 100vh;
 }
+#seller-information-palet-login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f3f4f5;
+        height: 100vh;
+    }
 
 #seller-information-palet-logo-box{
     
@@ -75,7 +89,7 @@ html, body{
 }
 #new-seller-information-palet-logo{
     width: 100px;
-    margin-top: -100px;
+    /* margin-top: 0px; */
     
 }
 
@@ -113,7 +127,7 @@ html, body{
 .new-seller-information-palet-benefits-text-des{
     margin-left: 1.5rem;
     margin-right: 1.5rem;
-    font-size: 1.1rem;
+    font-size: .9rem;
     margin-bottom: 8px;
     font-weight: 500;
 }
@@ -131,6 +145,13 @@ html, body{
     justify-content: center;
     align-items: center;
 }
+#seller-input-palet-reg{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: unset;
+    }
 
 
 #input-box{
@@ -235,10 +256,22 @@ html, body{
 
 
 @media only screen and (max-width: 1450px) {
+    /* .information-palet{
+        display: none;
+    } */
     #seller-main-section{
         
     }
     #seller-information-palet{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f3f4f5;
+        height: 100vh;
+    }
+
+    #seller-information-palet-login{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -285,15 +318,45 @@ html, body{
 
 
 
+@media only screen and (max-width: 1050px) {
+    #new-seller-information-palet-user{
+        width: 200px;
+        height: 200px;
+        object-fit: contain;
+        border-radius: 50%;
+        
+    }
+    /* .information-palet{
+        display: none;
+    } */
+
+
+
+
+/*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet *//*information-palet */
+}
+
+
+
+
 @media only screen and (max-width: 767px) {
     
-    
+    /* .information-palet{
+        display: none;
+    } */
     #seller-input-palet{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
+    }
+    #seller-input-palet-reg{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: unset;
     }
 
     #input-box{
@@ -320,6 +383,15 @@ html, body{
     }
 
     #seller-information-palet{
+        display: none;
+        /* display: flex; */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f3f4f5;
+        height: 100vh;
+    }
+    #seller-information-palet-login{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -332,6 +404,14 @@ html, body{
         width: 100px;
         margin-top: 0px;
         
+    }
+    #seller-information-palet-login{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #f3f4f5;
+        height: 100vh;
     }
 
 

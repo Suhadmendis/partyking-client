@@ -6,12 +6,13 @@ html, body{
 
 
 #seller-thank-palet{
+    margin-top: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: white;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 
@@ -62,3 +63,40 @@ html, body{
     font-weight: 600;
     color: #1D2C41;
 }
+
+
+
+@media only screen and (max-width: 1500px) {
+    #seller-thank-palet{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        /* height: 100vh; */
+    }
+    #seller-thank-palet-box{
+        width: 70%;
+        text-align: center;
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+    #seller-thank-palet{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        /* height: 100vh; */
+    }
+    #seller-thank-palet-box{
+        width: 100%;
+        text-align: center;
+    }
+}
+
+

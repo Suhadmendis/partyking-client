@@ -20,6 +20,7 @@ if (isset($_COOKIE[$cookie_name])) {
     <!-- Required meta tags -->
     <title>Product</title>
     <meta charset="utf-8">
+    <link rel="icon" href="_img/logo full site icon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="theme-color" content="#1D2C41">
@@ -95,7 +96,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <img id="account-information-store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="" alt="">
                     </div>
                     <p class="account-information-store-name">
-                        {{ store.name }}
+                        {{ store.name }} <i class="fas fa-sign-out-alt logout-icon-other" @click="logout();"></i>
                     </p>
                   
                 </div>

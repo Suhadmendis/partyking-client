@@ -21,9 +21,9 @@ html, body{
     /* background-color: saddlebrown; */
 }
 #primary-upload-image{
-    width: 400px;
-    height: 400px;
-    object-fit: cover;
+    width: 100%;    
+    height: 100%;
+    object-fit: scale-down;
 }
 
 .sub-upload-image{
@@ -94,4 +94,9 @@ html, body{
     color: #fff;
     background-color: #1D2C41;
     border-color: #1D2C41;
+}
+
+
+#upload-pallet{
+    width: 100%;
 }

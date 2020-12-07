@@ -461,6 +461,13 @@ html, body{
     opacity: .2;
 }
 
+.logout-icon-other{
+    display: none;
+    margin-left: 20px;
+    font-size: 15px;
+    opacity: .2;
+}
+
 
 .edit-icon-name:hover{    
     opacity: 1;
@@ -469,6 +476,10 @@ html, body{
     opacity: 1;
 }
 .edit-icon-other:hover{
+    opacity: 1;
+}
+
+.logout-icon-other:hover{
     opacity: 1;
 }
 
@@ -616,6 +627,14 @@ html, body{
 
 
 @media only screen and (max-width: 991px) {
+
+    .logout-icon-other{
+        display: initial;
+        margin-left: 20px;
+        font-size: 15px;
+        opacity: .2;
+    }
+
     .account-information-store-name{
         margin-left: 0.9rem;
         margin-right: 0.9rem;
@@ -671,6 +690,13 @@ html, body{
 
 
 @media only screen and (max-width: 576px) {
+    .logout-icon-other{
+        display: initial;
+        margin-left: 20px;
+        font-size: 15px;
+        opacity: .2;
+    }
+
     .account-information-store-name{
         margin-left: 0.9rem;
         margin-right: 0.9rem;

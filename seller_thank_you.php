@@ -1,9 +1,15 @@
+<?php
+
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <title>Product</title>
     <meta charset="utf-8">
+    <link rel="icon" href="_img/logo full site icon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -28,9 +34,6 @@
 
 </head>
 <body>
-
-
-
 
 
     <div class="container-fluid" id="app">
@@ -70,7 +73,7 @@
 
                         <div class="seller-relationship-palet-sub-box">
                             <img class="seller-relationship-palet-image-user" src="_img/linked_face.PNG" alt="">
-                            <p class="seller-relationship-palet-text">Suhad Mendis</p>
+                            <p class="seller-relationship-palet-text"><?php echo $_SESSION['CURRENT_USER']; ?></p>
                         </div>
                 </div>
                 

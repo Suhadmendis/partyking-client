@@ -23,6 +23,9 @@
         rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+        integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="_css/seller_auth.css">
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
@@ -36,7 +39,7 @@
 
     <div class="container-fluid" id="app">
         <div class="row">
-            <div class="col-md-3" id="seller-information-palet" v-show="information_pallet">
+            <div class="col-lg-4 information-palet" id="seller-information-palet"  v-show="information_pallet">
                 <div id="seller-information-palet-logo-box">
                     <img id="seller-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
@@ -66,7 +69,7 @@
             </div>
 
 
-            <div class="col-md-3" id="seller-information-palet" v-show="!information_pallet">
+            <div class="col-lg-4 information-palet" id="seller-information-palet"  v-show="!information_pallet">
                 <div id="new-seller-information-palet-logo-box">
                     <img id="new-seller-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
@@ -93,7 +96,7 @@
             </div>
 
 
-            <div class="col-md-9" id="seller-input-palet">
+            <div class="col-lg-8" id="seller-input-palet-reg">
                 <div id="input-box">
                     <p class="input-text-head">
                         Login to your affiliate platform
@@ -115,11 +118,11 @@
 
 
                     <div id="seller-input-palet-bottom">
-                        <a href="seller_thank_you.html">
-                            <button class="seller-button">
+                        <!-- <a href="seller_thank_you.html"> -->
+                            <button class="seller-button" @click="register()">
                                 Registration
                             </button>
-                        </a>
+                        <!-- </a> -->
 
 
 
@@ -142,49 +145,40 @@
 
             </div>
         </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Registration</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ message }}
+                    </div>
+                    <div class="modal-footer">
+                    <a href="seller_auth.php">
+                        <button type="button" class="btn btn-primary" >Login</button>
+                    </a>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                information_pallet: false,
-                user: { full_name: "", email: "", contact_number: "", password: "" }
-            },
-            //         components: {
-            //   'i-tabs' : Tabs,
-            //   'i-tab-pane': Tabpane
-            // }
-        });
-    </script>
-
-
-
-
-
-
-
-
-
-
+    
+  <script src="_js/seller_registration.js"></script>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

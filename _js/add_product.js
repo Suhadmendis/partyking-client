@@ -13,7 +13,7 @@ var app = new Vue({
       type: "",
       day_price: "",
       sell_price: "",
-      pro_image: "_img/imageupload.png",
+      pro_image: "_img/imageupload.jpg",
       pro_image_pass: 0,
       image: "",
     },

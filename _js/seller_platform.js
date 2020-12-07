@@ -24,7 +24,7 @@ var app = new Vue({
       street_address: "Street address",
       city: "City",
       postal: "ZIP / Postal",
-      url: "",
+      url: "logo full site.webp",
     },
     PRODUCTS: [],
     product_pallet: false,
@@ -57,7 +57,8 @@ var app = new Vue({
             response.data[2][0].address_1 || "Street Address";
           this.store.city = response.data[2][0].city_name || "City";
           this.store.postal = response.data[2][0].postal || "ZIP / Postal";
-          this.store.url = response.data[2][0].img_logo;
+          this.store.url =
+            response.data[2][0].img_logo || "logo full site.webp";
         });
     },
     getPic: function (fb_id) {
@@ -156,17 +157,13 @@ var app = new Vue({
         });
     },
     logout: function () {
-      axios
-        .get("CheckUsers.php?Command=logout")
-        .then((response) => {
-          location.reload("seller_auth.php");
-        });
+      axios.get("CheckUsers.php?Command=logout").then((response) => {
+        location.reload("seller_auth.php");
+      });
     },
   },
 });
 // edit_update;
-
-
 
 $(document).ready(function () {
   $("#upload-input").change(function () {

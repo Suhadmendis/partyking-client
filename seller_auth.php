@@ -19,6 +19,7 @@ if (isset($_COOKIE[$cookie_name])) {
     <!-- Required meta tags -->
     <title>Product</title>
     <meta charset="utf-8">
+    <link rel="icon" href="_img/logo full site icon.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -79,7 +80,7 @@ if (isset($_COOKIE[$cookie_name])) {
                             LOGIN
                         </button>
                         <div id="seller-register-text-box">
-                            <a href="seller_registration.html" style="text-decoration: none;">
+                            <a href="seller_registration.php" style="text-decoration: none;">
                                 <p id="seller-register-text">
                                     Don't have an account? <strong>Register</strong>
                                 </p>
@@ -103,7 +104,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
             </div>
 
-            <div class="col-lg-4 order-lg-1" id="seller-information-palet" v-show="information_pallet">
+            <div class="col-lg-4 order-lg-1" id="seller-information-palet-login" v-show="information_pallet">
                 <div id="seller-information-palet-logo-box">
                     <img id="seller-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>
@@ -134,7 +135,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
             
-            <div class="col-lg-4 order-lg-1 anchor" id="seller-information-palet" v-show="!information_pallet">
+            <div class="col-lg-4 order-lg-1 anchor" id="seller-information-palet-login" v-show="!information_pallet">
                 <div id="new-seller-information-palet-logo-box">
                     <img id="new-seller-information-palet-logo" src="_img/logo full site.webp" alt="">
                 </div>

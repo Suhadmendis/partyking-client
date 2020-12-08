@@ -166,7 +166,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Rent'" v-model="PRODUCT.sell_price">
                         <br><br>
 
-                        <button @click="save_product()" class="btn btn-secondary">Save</button>
+                        <button @click="update_product()" class="btn btn-secondary">Update</button>
                         
                     </div>
 
@@ -187,12 +187,14 @@ if (isset($_COOKIE[$cookie_name])) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div> -->
-                    <div class="modal-body">
-                        <p>{{ message }}</p>
-                        <div v-if="icon_flag" style="text-align: center;">
+                    <div class="modal-body" style="text-align: center;">
+                        <div v-if="icon_flag" >
                             <br>
                             <i class="far fa-check-circle" id="check-icon"></i>
                         </div>
+                        <br>
+                        <p>{{ message }}</p>
+                        
         
                     </div>
                     <div class="modal-footer">

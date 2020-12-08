@@ -20,6 +20,7 @@ var app = new Vue({
       pro_image: "_img/imageupload.jpg",
       pro_image_pass: 0,
       image: "",
+      updated_image: "",
     },
     categories: "",
     subCategories: "",
@@ -32,7 +33,7 @@ var app = new Vue({
   },
   mounted: function () {
     this.generate();
-    this.getProduct();
+    
   },
   watch: {
     "PRODUCT.day_price": function (newQuestion, oldQuestion) {
@@ -60,6 +61,7 @@ var app = new Vue({
         .get("server/product_operation_data.php?Command=generate")
         .then((response) => {
           this.categories = response.data[0];
+          this.getProduct();
         });
     },
     getProduct: function () {
@@ -90,24 +92,26 @@ var app = new Vue({
           // theme: "";
           // type: "Rent";
           // user: "User Name";
-
           
           this.PRODUCT.name= response.data[0].name;
-          this.PRODUCT.category_ref= response.data[0].category_ref;
-          this.PRODUCT.sub_category_ref= response.data[0].sub_category_ref;
-          this.PRODUCT.condition= response.data[0].pro_condition;
+          this.select_cat(response.data[1]);                    
+          this.select_sub_cat(response.data[2]);
+          var temp_vari1 = { name: response.data[0].pro_condition };
+          this.select_condition(temp_vari1);
+
+          var temp_vari2 = { name: response.data[0].type };
+          this.select_type(temp_vari2);
+
           this.PRODUCT.brand= response.data[0].brand;
           this.PRODUCT.model= response.data[0].model;
           this.PRODUCT.theme= response.data[0].theme;
           this.PRODUCT.description= response.data[0].description;
-          this.PRODUCT.type= response.data[0].type;
           this.PRODUCT.day_price= response.data[0].day_price;
           this.PRODUCT.sell_price= response.data[0].sell_price;
-          this.PRODUCT.pro_image= "uploads/1/post_products/" + response.data[0].image_1;
-          this.PRODUCT.pro_image_pass= 0;
-      
-    
-
+          this.PRODUCT.pro_image= "uploads/1/products/" + response.data[0].image_1;
+          this.PRODUCT.pro_image_pass = 1;
+          this.PRODUCT.image = response.data[0].image_1;
+          this.PRODUCT.updated_image = response.data[0].image_1;
 
         });
     },
@@ -124,6 +128,7 @@ var app = new Vue({
         });
     },
     select_sub_cat: function (value) {
+      // console.log(value);
       this.selected_subCategory = value;
       this.PRODUCT.sub_category_ref = value.REF;
     },
@@ -142,7 +147,8 @@ var app = new Vue({
         this.PRODUCT.day_price = "";
       }
     },
-    save_product: function () {
+    update_product: function () {
+      app.icon_flag = false;
       if (this.PRODUCT.name == "") {
         this.message = "Name is not Entered";
         $("#exampleModal").modal("show");
@@ -210,9 +216,11 @@ var app = new Vue({
 
       axios
         .get(
-          "server/product_operation_data.php?Command=save_product" +
+          "server/product_operation_data.php?Command=update_product" +
             "&name=" +
             this.PRODUCT.name +
+            "&REF=" +
+            document.getElementById("PRO_REF").value +
             "&category_ref=" +
             this.PRODUCT.category_ref +
             "&sub_category_ref=" +
@@ -237,24 +245,34 @@ var app = new Vue({
             this.PRODUCT.image
         )
         .then((response) => {
-          if (response.data == "Saved") {
-            this.upload_image();
-            this.PRODUCT.name = "";
-            this.PRODUCT.category_ref = "";
-            this.PRODUCT.sub_category_ref = "";
-            this.PRODUCT.condition = "";
-            this.PRODUCT.brand = "";
-            this.PRODUCT.model = "";
-            this.PRODUCT.theme = "";
-            this.PRODUCT.description = "";
-            this.PRODUCT.type = "Rent";
-            this.PRODUCT.day_price = "";
-            this.PRODUCT.sell_price = "";
-            this.selected_category = { REF: "", category_name: "Category" };
-            this.selected_subCategory = { REF: "", name: "Sub Category" };
-            this.selected_condition = "Condition";
-            (this.selected_type = "Rent"),
-              (this.PRODUCT.pro_image = "_img/imageupload.jpg");
+          if (response.data == "Updated") {
+            
+            if (this.PRODUCT.image != this.PRODUCT.updated_image) {
+              this.upload_image();
+            }else{
+              app.message = "Updated";
+              app.icon_flag = true;
+  
+              $("#exampleModal").modal("show");
+
+            }
+
+            // this.PRODUCT.name = "";
+            // this.PRODUCT.category_ref = "";
+            // this.PRODUCT.sub_category_ref = "";
+            // this.PRODUCT.condition = "";
+            // this.PRODUCT.brand = "";
+            // this.PRODUCT.model = "";
+            // this.PRODUCT.theme = "";
+            // this.PRODUCT.description = "";
+            // this.PRODUCT.type = "Rent";
+            // this.PRODUCT.day_price = "";
+            // this.PRODUCT.sell_price = "";
+            // this.selected_category = { REF: "", category_name: "Category" };
+            // this.selected_subCategory = { REF: "", name: "Sub Category" };
+            // this.selected_condition = "Condition";
+            // this.selected_type = "Rent";
+            // this.PRODUCT.pro_image = "_img/imageupload.jpg";
           }
         });
     },
@@ -272,7 +290,7 @@ var app = new Vue({
         data: fd,
         type: "post",
         success: function (response) {
-          app.message = "Saved";
+          app.message = "Updated";
           app.icon_flag = true;
 
           $("#exampleModal").modal("show");

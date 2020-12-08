@@ -40,9 +40,9 @@ var app = new Vue({
           this.PRODUCTS = response.data[0];
           this.getPic(response.data[1][0].fb_id);
           this.user.full_name =
-            response.data[1][0].first_name || "" +
-            " " +
-            response.data[1][0].last_name || "";
+            response.data[1][0].first_name ||
+            "" + " " + response.data[1][0].last_name ||
+            "";
           this.user.REF = response.data[1][0].REF;
           this.user.contact_number = response.data[1][0].tel_1 || "077XXXXXXX";
           this.product_pallet = true;
@@ -72,9 +72,27 @@ var app = new Vue({
           this.user.url = response.data.data.url;
         });
     },
+    delete_product: function (ref) {
+      
+      if (confirm("Do you want to Remove this Product?")) {
+        axios
+          .get(
+            "server/product_operation_data.php?Command=delete_product&REF=" +
+              ref
+          )
+          .then((response) => {
+            if (response.data == "Deleted") {
+              this.generate();
+            }
+          });
+      } else {
+        
+      }
+      
+    },
     edit: function (flag) {
       this.updateMainPanel = "";
-     
+
       if (flag == "user_number") {
         this.message_head = "Seller Contact Number";
         this.message = "Please enter the seller Contact Number";
@@ -130,9 +148,8 @@ var app = new Vue({
         this.editplaceholder = "10350";
         $("#exampleModal").modal("show");
       }
-      
+
       this.editflag = flag;
-      
     },
     edit_update: function (editflag) {
       axios

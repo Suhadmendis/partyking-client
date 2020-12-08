@@ -27,6 +27,20 @@ if ($_GET["Command"] == "getProduct") {
     $objArray = Array();
     $sql = "SELECT * FROM m_product where REF = '" . $_GET['REF'] . "'";
     $result = $conn->query($sql);
+    $row1 = $result->fetch();
+
+    array_push($objArray,$row1);
+
+
+    $sql = "SELECT * FROM m_category where REF = '" . $row1['category_ref'] . "'";
+    $result = $conn->query($sql);
+    $row2 = $result->fetch();
+
+    array_push($objArray,$row2);
+
+
+    $sql = "SELECT * FROM m_sub_category where REF = '" . $row1['sub_category_ref'] . "'";
+    $result = $conn->query($sql);
     $row = $result->fetch();
 
     array_push($objArray,$row);
@@ -46,7 +60,7 @@ if ($_GET["Command"] == "generateProducts") {
 
 
     $objArray = Array();
-    $sql = "SELECT * FROM m_product where store_ref = '" . $row_store['REF'] . "'";
+    $sql = "SELECT * FROM m_product where store_ref = '" . $row_store['REF'] . "' and cancel = '0'";
     $result = $conn->query($sql);
     $row = $result->fetchAll();
     
@@ -132,6 +146,106 @@ if ($_GET["Command"] == "save_product") {
         echo $e;
     }
 }
+
+
+
+
+
+if ($_GET["Command"] == "update_product") {
+    
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $CURRENT_USER = "User Name";
+        
+        
+        $sql = "update m_product set name = '" . $_GET['name'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set category_ref = '" . $_GET['category_ref'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set sub_category_ref = '" . $_GET['sub_category_ref'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set pro_condition = '" . $_GET['condition'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set brand = '" . $_GET['brand'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set model = '" . $_GET['model'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set theme = '" . $_GET['theme'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set description = '" . $_GET['description'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set type = '" . $_GET['type'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set day_price = '" . $_GET['day_price'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set sell_price = '" . $_GET['sell_price'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "update m_product set user = '" . $CURRENT_USER . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+
+        $sql = "update m_product set image_1 = '" . $_GET['image'] . "' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+
+
+       
+        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+                        ('" . $_GET['REF'] . "' ,'entry' ,'Update Product'  ,'" . $CURRENT_USER . "' ,'ip')";
+        $result = $conn->query($sql);
+
+        $conn->commit();
+        echo "Updated";
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+}
+
+
+
+if ($_GET["Command"] == "delete_product") {
+    
+    try {
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
+
+        $CURRENT_USER = "User Name";
+        
+        
+        $sql = "update m_product set cancel = '1' where REF = '" . $_GET['REF'] . "'";
+        $result = $conn->query($sql);
+        
+        $sql = "Insert into sys_log(REF, entry, operation, user, ip)values
+                        ('" . $_GET['REF'] . "' ,'entry' ,'Delete Product'  ,'" . $CURRENT_USER . "' ,'ip')";
+        $result = $conn->query($sql);
+
+        $conn->commit();
+        echo "Deleted";
+
+    } catch (Exception $e) {
+        $conn->rollBack();
+        echo $e;
+    }
+}
+
+
+
+
+
+
 
 
 if ($_GET["Command"] == "edit_update") {

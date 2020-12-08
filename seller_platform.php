@@ -52,6 +52,10 @@ if (isset($_COOKIE[$cookie_name])) {
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
 
 
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -70,7 +74,7 @@ if (isset($_COOKIE[$cookie_name])) {
                 
                     <p id="account-information-palet-benefits-text-head" v-if="user.full_name == ''">Your Name<i class="fas fa-sign-out-alt edit-icon-other" @click="logout();"></i></p>
                     <p id="account-information-palet-benefits-text-head" v-if="user.full_name != ''">
-                        {{ user.full_name }}<i class="fas fa-sign-out-alt edit-icon-other" @click="logout();"></i></p>
+                        {{ user.full_name }}<i class="fas fa-power-off edit-icon-other" @click="logout();"></i></p>
 
                     
                     <!-- <p class="account-information-palet-benefits-text-des">
@@ -96,7 +100,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <img id="account-information-store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="" alt="">
                     </div>
                     <p class="account-information-store-name">
-                        {{ store.name }} <i class="fas fa-sign-out-alt logout-icon-other" @click="logout();"></i>
+                        {{ store.name }} <i class="fas fa-power-off logout-icon-other" @click="logout();"></i>
                     </p>
                   
                 </div>
@@ -226,10 +230,22 @@ if (isset($_COOKIE[$cookie_name])) {
                                             <p class="item-label-price" v-if="product.type == 'Rent' || product.type == 'Rent or Sell'">
                                                 Day - Rs {{ product.day_price }}
                                             </p>
+                                        </div>
+                                        <div id="item-label-bottom-button">
+                                            
+                                            <a>
+                                                <i class="fas fa-trash-alt delete-btn" @click="delete_product(product.REF)" ></i>
+                                            </a>
+                                            <!-- <a v-bind:href="'update_product.php?REF=' + product.REF">
+                                                <label class="switch">
+                                                    <input type="checkbox" checked>
+                                                    <span class="slider round"></span>
+                                                </label>
+                                            </a> -->
                                             <a v-bind:href="'update_product.php?REF=' + product.REF">
                                                 <button class="update-button">Update</button>
                                             </a>
-                                            
+
                                         </div>
 
                                     </div>
@@ -275,13 +291,17 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
 
-<i class="far fa-check-circle"></i>
+
 
 
     </div>
 
     
     <script src="_js/seller_platform.js"></script>
+
+
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

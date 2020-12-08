@@ -100,7 +100,9 @@ var app = new Vue({
           if (response.data == "ok") {
             location.reload();
           }else{
-            alert("error");
+            this.message = "E-mail or Password is incorrect";
+            $("#exampleModal1").modal("show");
+        
           }
         });
     },

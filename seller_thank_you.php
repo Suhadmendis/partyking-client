@@ -46,7 +46,7 @@ session_start();
                     <p>Thank you for choosing us. We are happy to let you know that you are among the first 60 to 110 sellers. This is the best opportunity for you to increase your sales. Make sure to let other fellow sellers aware about our website.</p>
                 
                     <p>Get ready to send your sales shoot over the roof!</p>
-                    <p>Many tricks and method will also be shared among each seller.</p>
+                    <p>Many tricks and methods will also be shared among each seller.</p>
 
                 </div>
 

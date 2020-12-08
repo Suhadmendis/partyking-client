@@ -158,11 +158,11 @@ if (isset($_COOKIE[$cookie_name])) {
                             </div>
                         </div>                    
 
-                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Sell'"> Day: </label>
+                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Sell'"> Per Day Price: (LKR)</label>
                         <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Sell'"  v-model="PRODUCT.day_price">
                         <br><br>
 
-                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Rent'"> Sell: </label>
+                        <label for="" class="seller-input-palet-text-label" v-show="selected_type != 'Rent'"> Selling Price: (LKR)</label>
                         <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Rent'" v-model="PRODUCT.sell_price">
                         <br><br>
 

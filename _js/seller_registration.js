@@ -10,6 +10,34 @@ var app = new Vue({
       this.information_pallet = false;
     },
     register: function () {
+      if (this.user.full_name == "") {
+        this.message = "Full Name is not Entered";
+        $("#exampleModal3").modal("show");
+        return;
+      }
+
+      if (this.user.email == "") {
+        this.message = "Email is not Entered";
+        $("#exampleModal3").modal("show");
+        return;
+      }
+
+      if (this.user.contact_number == "") {
+        this.message = "Contact Number is not Entered";
+        $("#exampleModal3").modal("show");
+        return;
+      }
+
+      if (this.user.password == "") {
+        this.message = "Password is not Entered";
+        $("#exampleModal3").modal("show");
+        return;
+      }
+      
+      
+      
+      
+
       axios
         .get(
           "server/seller_operation_data.php?Command=register_web&full_name=" +

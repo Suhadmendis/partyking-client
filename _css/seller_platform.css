@@ -179,7 +179,7 @@ html, body{
 }
 
 #store-item-pallet{
-    height: 1310px;
+    height: 780px;
     overflow: scroll;
 }
 
@@ -279,7 +279,7 @@ html, body{
 .item-label-des{
     font-size: .7rem;
     font-weight: 500;
-    min-height: 120px;
+    /* min-height: 120px; */
     margin-top: 10px;
 }
 
@@ -295,17 +295,31 @@ html, body{
     font-weight: 600;
 }
 
+.type-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.type-box-pallet{
+    min-width: 100px;
+}
+
 .item-label-3type-dot{
+    /* display: block;
     width: 33.33%;
-    float: left;
+    float: left; */
     font-size: .8rem;
     font-weight: 600;
 }
 .item-label-3type{
+    /* display: block;
     width: 33.33%;
     float: left;
     font-size: .6rem;
-    font-weight: 600;
+    font-weight: 600; */
 }
 
 
@@ -745,7 +759,7 @@ input:checked + .slider:before {
     .item-label-des{
         font-size: .7rem;
         font-weight: 500;
-        min-height: 216px;
+        /* min-height: 216px; */
         margin-top: 10px;
     }
 
@@ -849,7 +863,7 @@ input:checked + .slider:before {
     .item-label-des{
         font-size: .8rem;
         font-weight: 500;
-        min-height: 90px;
+        /* min-height: 90px; */
         margin-top: 10px;
     }
 

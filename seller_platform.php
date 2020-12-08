@@ -52,7 +52,7 @@ if (isset($_COOKIE[$cookie_name])) {
     <!-- <link rel="stylesheet" href="_css/footer.css"> -->
 
 
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    
 
 
 
@@ -188,36 +188,49 @@ if (isset($_COOKIE[$cookie_name])) {
                                         </p>
                                         
 
-                                        <p class="item-label-3type-dot" v-if="product.brand == ''">&nbsp;
-                                        </p>
-                                        <p class="item-label-3type-dot" v-if="product.brand != ''">
-                                            Brand:
-                                        </p>
-                                        <p class="item-label-3type-dot" v-if="product.model == ''">&nbsp;
-                                        </p>
-                                        <p class="item-label-3type-dot" v-if="product.model != ''">
-                                            Model:
-                                        </p>
-                                        
-                                        <p class="item-label-3type-dot" v-if="product.theme == ''">&nbsp;
-                                        </p>
-                                        <p class="item-label-3type-dot" v-if="product.theme != ''">
-                                            Theme:
-                                        </p>
+                                        <div class="type-box">
 
-                                       
-                                        <p class="item-label-3type" v-if="product.brand == ''">&nbsp;</p>
-                                        <p class="item-label-3type" v-if="product.brand != ''">
-                                            {{ product.brand }}
-                                        </p>
-                                        <p class="item-label-3type" v-if="product.model == ''">&nbsp;</p>
-                                        <p class="item-label-3type" v-if="product.model != ''">
-                                            {{ product.model }}
-                                        </p>
-                                        <p class="item-label-3type" v-if="product.theme == ''">&nbsp;</p>
-                                        <p class="item-label-3type" v-if="product.theme != ''">
-                                            {{ product.theme }}
-                                        </p>
+                                            <div class="type-box-pallet" v-if="product.brand == ''">&nbsp;</div>    
+                                            <div class="type-box-pallet" v-if="product.brand != ''">
+                                                <p class="item-label-3type-dot" >
+                                                    Brand:
+                                                </p>
+                                                <p class="item-label-3type">
+                                                    {{ product.brand }}
+                                                </p>
+                                            </div>
+
+                                            <div class="type-box-pallet" v-if="product.model == ''">&nbsp;</div>    
+                                            <div class="type-box-pallet" v-if="product.model != ''">
+                                                <p class="item-label-3type-dot" >
+                                                    Model:
+                                                </p>
+                                                <p class="item-label-3type">
+                                                    {{ product.model }}
+                                                </p>
+                                            </div>
+
+                                            <div class="type-box-pallet" v-if="product.theme == ''">&nbsp;</div>    
+                                            <div class="type-box-pallet" v-if="product.theme != ''">
+                                                <p class="item-label-3type-dot" >
+                                                    Theme:
+                                                </p>
+                                                <p class="item-label-3type">
+                                                    {{ product.theme }}
+                                                </p>
+                                            </div>
+                                            
+                                            
+                                            
+
+                                        
+                                            
+                                            
+                                            
+
+                                        </div>
+                                        
+                                        
 
                                         
                                         <p class="item-label-des">
@@ -225,10 +238,10 @@ if (isset($_COOKIE[$cookie_name])) {
                                         </p>
                                         <div id="item-label-bottom">
                                             <p class="item-label-price" v-if="product.type == 'Sell' || product.type == 'Rent or Sell'">
-                                                Selling Price - Rs {{ product.sell_price }}
+                                                Selling Price - LKR {{ product.sell_price }}
                                             </p>
                                             <p class="item-label-price" v-if="product.type == 'Rent' || product.type == 'Rent or Sell'">
-                                                Day - Rs {{ product.day_price }}
+                                                Day - LKR {{ product.day_price }}
                                             </p>
                                         </div>
                                         <div id="item-label-bottom-button">

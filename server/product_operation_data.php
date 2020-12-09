@@ -21,6 +21,10 @@ if ($_GET["Command"] == "generate") {
     
 }
 
+
+
+
+
 if ($_GET["Command"] == "getProduct") {
    header('Content-Type: application/json');
     
@@ -319,3 +323,31 @@ if ($_GET["Command"] == "debug") {
     // print_r($_SESSION);
     
 }
+
+
+
+
+if ($_GET["Command"] == "user_category") {
+   header('Content-Type: application/json');
+    
+    $objArray = Array();
+    $sql = "SELECT * FROM m_category";
+    $result = $conn->query($sql);
+    $row = $result->fetchAll();
+
+    $flag = 1;
+    for ($i=0; $i < sizeof($row); $i++) { 
+        $sql = "SELECT * FROM m_sub_category where category_ref = '" . $row[$i]['REF'] . "'";
+        $result = $conn->query($sql);
+        $row[$i]['sub_categories'] = $result->fetchAll();
+
+        $row[$i]['active_pill'] = $flag;
+        $flag = 0;
+    }
+    array_push($objArray,$row);
+
+    echo json_encode($objArray);
+    
+}
+
+

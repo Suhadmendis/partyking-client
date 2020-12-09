@@ -481,6 +481,14 @@ html, body{
   top: 0;
 }
 
+#upload-input1 {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+
 .edit-icon-name{
     margin-left: 10px;
     font-size: 18px;

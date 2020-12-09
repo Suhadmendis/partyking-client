@@ -155,7 +155,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <input type="number" class="seller-input-palet-text-box" v-show="selected_type != 'Rent'" v-model="PRODUCT.sell_price">
                         <br><br>
 
-                        <button @click="update_product()" class="btn btn-secondary">Update</button>
+                        <!-- <button @click="update_product()" class="btn btn-secondary">Update</button> -->
                         
                     </div>
 
@@ -187,7 +187,6 @@ if (isset($_COOKIE[$cookie_name])) {
                         <input id="upload-input" type="file" name="file" />
                     </div> -->
                     <div class="upload-product-details-pallet">
-                        
                         <button @click="update_product()" class="btn btn-secondary">Update</button>
                     </div>
 

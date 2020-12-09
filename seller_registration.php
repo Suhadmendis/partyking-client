@@ -119,7 +119,7 @@
                     <input type="number" class="seller-input-palet-text-box" v-model="user.contact_number" @click="change_panel()">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">New Password: </label>
-                    <input type="password" class="seller-input-palet-text-box" v-model="user.password" @click="change_panel()">
+                    <input type="password" id="txtPassword" onkeypress="checkEnter(event);" class="seller-input-palet-text-box" v-model="user.password" @click="change_panel()">
 
 
                     <div id="seller-input-palet-bottom">
@@ -205,6 +205,16 @@
 
     </div>
 
+
+
+    
+<script>
+    function checkEnter(params) {
+        if (params.keyCode == 13) {
+            app.register();
+        }
+    }
+</script>
 
     
   <script src="_js/seller_registration.js"></script>

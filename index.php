@@ -1,5 +1,5 @@
 <?php
-header('Location: ' . "seller_auth.php");
+// header('Location: ' . "seller_auth.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,16 +40,14 @@ header('Location: ' . "seller_auth.php");
 <div id="app">
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel"
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content" id="model-pallet">
                 <div class="modal-header" id="model-pallet-header">
-                    <!-- <h5 class="modal-title" id="exampleModalLabel">New message</h5> -->
+                   
                     <img src="_img/logo full site 2.webp" width="100" height="100" class="d-inline-block align-top" alt="" loading="lazy">
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button> -->
+                   
                 </div>
                 <div class="modal-body">
                     <p> {{ message }} </p>
@@ -74,7 +72,7 @@ header('Location: ' . "seller_auth.php");
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
 
@@ -148,6 +146,9 @@ header('Location: ' . "seller_auth.php");
 
 
 
+
+
+
 <div id="banner-section">
     <div class="container-fluid">
         <div id="banner-area">
@@ -163,7 +164,81 @@ header('Location: ' . "seller_auth.php");
 
 
 
-<br><br><br><br><br><br><br>
+<br><br>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            
+            <div id="category-pallet" >
+                <div @click="activate(categories.REF,categories.category_name)" :class="categories.active_pill == 1 ? 'custom-pill active-custom-pill' : 'custom-pill'" v-for="categories in CATEGORIES" >
+                    <div class="category-text">
+                        <p class="pill-text">{{ categories.category_name }}</p>
+                    </div>
+                    <div class="category-icon">
+                        <i class="fas fa-home pill-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-9">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="category-name">{{ selected_category_name }}</h1>
+                    <h3 id="view-button">View more</h3>
+                    
+                    <div id='sub-category-box'>
+                    
+                        <div @click="activate_sub(sub_categories.REF)" :class="sub_categories.REF == selected_sub_category ? 'sub-category-button scb-active' : 'sub-category-button'" v-for="sub_categories in selected_sub_categories">
+                            {{ sub_categories.name }}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="small-product-pallet">
+                        <div class="image-pallet">
+                            <img class="product-image" src="" alt="">
+                        </div>
+                        <div class="info-pallet">
+                            <div class="product-info">
+                                <p class="product-title">Face Serum</p>
+                                <p class="product-des">Anti wrinkle</p>
+                            </div>
+                            <div class="info-image-pallet">
+                                <i class="fas fa-eye product-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    
+</div>
+
+
+
 <br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br>
 
@@ -265,19 +340,22 @@ header('Location: ' . "seller_auth.php");
 
 </div>
 
-<script>
+
+
+<script src="_js/index.js"></script>
+
+<!-- <script>
     var app = new Vue({
             el: '#app',
             data: {
                 inquiry: { email: "", full_name: "", contact: "" },
                 button_blocker: true,
                 message: "We are planning to launch our new website by the middle of December we are inviting you all to  please  complete the below details and join with the rest who are already registered.",
+                CATEGORIES: "",
             },
             mounted: function () {
-                setTimeout(function () {
-                  $("#exampleModal").modal("show"); 
-                }, 1500);
-              $('body').addClass('stop-scrolling')
+            
+                this.get_categories();
             },
             methods: {
                 send: function () {
@@ -291,7 +369,7 @@ header('Location: ' . "seller_auth.php");
                             this.inquiry.contact
                         )
                         .then((response) => {
-                            // alert(response.data == "Done");
+                            
                             console.log(response.data == "Done");
                             if (response.data == "Done") {
                                 console.log(response.data == "Done");
@@ -315,10 +393,32 @@ header('Location: ' . "seller_auth.php");
                     if (this.inquiry.full_name == "") { this.button_blocker = true; }
                     if (this.inquiry.contact == "") { this.button_blocker = true; }
 
+                },
+                get_categories: function () {
+                    axios
+                        .get(
+                            "server/product_operation_data.php?Command=user_category"
+                        )
+                        .then((response) => {
+                            
+                            this.CATEGORIES = response.data[0];
+                        });
+
+                },
+                activate: function (REF) {
+                    for (let index = 0; index < this.CATEGORIES.length; index++) {
+                        if (this.CATEGORIES[index].REF == REF) {
+                            this.CATEGORIES[index].active_pill = 1;
+                        }else{
+                            this.CATEGORIES[index].active_pill = 0;
+                        }
+                        
+                    }
+
                 }
             }
         })
-</script>
+</script> -->
 
 
 

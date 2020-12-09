@@ -137,11 +137,11 @@ var app = new Vue({
           $("#exampleModal").modal("show");
           return;
       }
-      if (this.PRODUCT.type == "") {
-          this.message = "Type is not Entered";
-          $("#exampleModal").modal("show");
-          return;
-      }
+      // if (this.PRODUCT.type == "") {
+      //     this.message = "Type is not Entered";
+      //     $("#exampleModal").modal("show");
+      //     return;
+      // }
 
       if (this.selected_type == "Rent") {
         if (this.PRODUCT.day_price == "") {

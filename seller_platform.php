@@ -124,10 +124,10 @@ if (isset($_COOKIE[$cookie_name])) {
                     <div class="col-sm-5">
                 
                         <p class="store-input-name">
-                            {{ store.name }} <i class="fas fa-pen edit-icon-name" @click="edit('store_name');"></i>
+                            Store Name: {{ store.name }} <i class="fas fa-pen edit-icon-name" @click="edit('store_name');"></i>
                         </p>
                         <p class="store-input-name-tagline">
-                            {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
+                            Tagline: {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
                         </p>
                         <div class="mobile-fix1">
                             <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
@@ -148,19 +148,19 @@ if (isset($_COOKIE[$cookie_name])) {
                     <div class="col-sm-5">
                 
                         <p class="store-input-name-email">
-                            {{ store.email }} <i class="fas fa-pen edit-icon-other" @click="edit('store_email');"></i>
+                            <strong>E-mail:</strong> {{ store.email }} <i class="fas fa-pen edit-icon-other" @click="edit('store_email');"></i>
                         </p>
                         <p class="store-input-name-contact-number">
-                            {{ store.contact_number }} <i class="fas fa-pen edit-icon-other" @click="edit('store_number');"></i>
+                            <strong>Contact Number:</strong> {{ store.contact_number }} <i class="fas fa-pen edit-icon-other" @click="edit('store_number');"></i>
                         </p>
                         <p class="store-input-name-street-address">
-                            {{ store.street_address }} <i class="fas fa-pen edit-icon-other" @click="edit('store_address');"></i>
+                            <strong>Street Address:</strong> {{ store.street_address }} <i class="fas fa-pen edit-icon-other" @click="edit('store_address');"></i>
                         </p>
                         <p class="store-input-name-city">
-                            {{ store.city }} <i class="fas fa-pen edit-icon-other" @click="edit('store_city');"></i>
+                            <strong>City:</strong> {{ store.city }} <i class="fas fa-pen edit-icon-other" @click="edit('store_city');"></i>
                         </p>
                         <p class="store-input-name-postal">
-                            {{ store.postal }} <i class="fas fa-pen edit-icon-other" @click="edit('store_postal');"></i>
+                            <strong>Postal Code:</strong> {{ store.postal }} <i class="fas fa-pen edit-icon-other" @click="edit('store_postal');"></i>
                         </p>
                     </div>
                 
@@ -171,7 +171,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         <div class="mobile-fix2">
                            <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
                                 Upload Logo
-                                <input id="upload-input" type="file" name="file" />
+                                <input id="upload-input1" type="file" name="file" />
                             </div>
                         </div>
 
@@ -238,33 +238,23 @@ if (isset($_COOKIE[$cookie_name])) {
                                                     {{ product.theme }}
                                                 </p>
                                             </div>
-                                            
-                                            
-                                            
-
-                                        
-                                            
-                                            
-                                            
 
                                         </div>
                                         
-                                        
 
-                                        
                                         <p class="item-label-des">
                                             {{ product.description }}
                                         </p>
                                         <div id="item-label-bottom">
                                             <p class="item-label-price" v-if="product.type == 'Sell' || product.type == 'Rent or Sell'">
-                                                Selling Price - LKR {{ product.sell_price }}
+                                                Selling Price - LKR {{ product.sell_price.substring(0, product.sell_price.length - 3) }}
                                             </p>
                                             <p class="item-label-price" v-if="product.type == 'Rent' || product.type == 'Rent or Sell'">
-                                                Day - LKR {{ product.day_price }}
+                                                Day - LKR {{ product.day_price.substring(0, product.sell_price.length - 3) }}
                                             </p>
                                         </div>
                                         <div id="item-label-bottom-button">
-                                            
+
                                             <a>
                                                 <i class="fas fa-trash-alt delete-btn" @click="delete_product(product.REF)" ></i>
                                             </a>
@@ -278,6 +268,7 @@ if (isset($_COOKIE[$cookie_name])) {
                                                 <button class="update-button">Update</button>
                                             </a>
 
+                                            
                                         </div>
 
                                     </div>
@@ -308,7 +299,7 @@ if (isset($_COOKIE[$cookie_name])) {
                         {{ message }}
                         <br>
                         <br>
-                        <input type="text" id="updateMainPanel" class="seller-input-palet-text-box" v-model="updateMainPanel" :placeholder="editplaceholder">
+                        <input :type="number ? 'number' : 'text'" type="text" id="updateMainPanel"  class="seller-input-palet-text-box" v-model="updateMainPanel" :placeholder="editplaceholder">
                         
                     </div>
                     <div class="modal-footer">
@@ -317,13 +308,6 @@ if (isset($_COOKIE[$cookie_name])) {
                 </div>
             </div>
         </div>
-
-        
-
-
-
-
-
 
 
     </div>

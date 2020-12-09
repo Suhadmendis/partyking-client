@@ -7,6 +7,7 @@ var app = new Vue({
     editflag: "",
     editplaceholder: "",
     updateMainPanel: "",
+    number: false,
     user: {
       REF: "",
       full_name: "",
@@ -93,8 +94,10 @@ var app = new Vue({
     },
     edit: function (flag) {
       this.updateMainPanel = "";
-
+      
+      
       if (flag == "user_number") {
+        this.number = false;
         this.message_head = "Seller Contact Number";
         this.message = "Please enter the seller Contact Number";
         this.editplaceholder = "077XXXXXXX";
@@ -102,6 +105,7 @@ var app = new Vue({
       }
 
       if (flag == "store_name") {
+        this.number = false;
         this.message_head = "Store Name";
         this.message = "Please enter the name of the Store";
         this.editplaceholder = "Colombo Party Store";
@@ -109,6 +113,7 @@ var app = new Vue({
       }
 
       if (flag == "tagline") {
+        this.number = false;
         this.message_head = "Tagline";
         this.message = "Please enter the Tagline of the Store";
         this.editplaceholder = "The King of Parties";
@@ -116,6 +121,7 @@ var app = new Vue({
       }
 
       if (flag == "store_email") {
+        this.number = false;
         this.message_head = "Email";
         this.message = "Please enter the Tagline of the Store";
         this.editplaceholder = "mystore@gmail.com";
@@ -123,6 +129,7 @@ var app = new Vue({
       }
 
       if (flag == "store_number") {
+        this.number = true;
         this.message_head = "Contact Number";
         this.message = "Please enter the Tagline of the Store";
         this.editplaceholder = "077XXXXXXX";
@@ -130,6 +137,7 @@ var app = new Vue({
       }
 
       if (flag == "store_address") {
+        this.number = false;
         this.message_head = "Street Address";
         this.message = "Please enter the Tagline of the Store";
         this.editplaceholder = "No: 154, Party Lane";
@@ -137,6 +145,7 @@ var app = new Vue({
       }
 
       if (flag == "store_city") {
+        this.number = false;
         this.message_head = "City";
         this.message = "Please enter the City where the Store is Located";
         this.editplaceholder = "Moratuwa";
@@ -144,6 +153,7 @@ var app = new Vue({
       }
 
       if (flag == "store_postal") {
+        this.number = false;
         this.message_head = "ZIP / Postal";
         this.message = "Please enter the ZIP / Postal of the Store";
         this.editplaceholder = "10350";
@@ -191,6 +201,33 @@ $(document).ready(function () {
     // $("#myform").change(function () {
     var fd = new FormData();
     var files = $("#upload-input")[0].files[0];
+    fd.append("file", files);
+
+    $.ajax({
+      url: "server/image_upload.php?Command=store_logo_upload",
+      dataType: "script",
+      cache: false,
+      contentType: false,
+      processData: false,
+      data: fd,
+      type: "post",
+      success: function (response) {
+        if (response.length < 20) {
+          app.store.url = response;
+        } else {
+          alert(response);
+        }
+      },
+    });
+  });
+});
+
+
+$(document).ready(function () {
+  $("#upload-input1").change(function () {
+    // $("#myform").change(function () {
+    var fd = new FormData();
+    var files = $("#upload-input1")[0].files[0];
     fd.append("file", files);
 
     $.ajax({

@@ -139,9 +139,7 @@ html, body{
 
 
 @media only screen and (max-width: 400px) {
-    body{
-        background-color: red;
-    }
+    
     #seller-thank-palet{
         margin-top: 20px;
         display: flex;

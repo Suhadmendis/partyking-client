@@ -46,8 +46,6 @@
 #banner-section{
     margin-top: 20px;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
 }
 
 
@@ -57,10 +55,166 @@
 .banner{
     width: 100%;
     border-radius:40px;
-    
     object-fit: scale-down;
 }
 
 
 
 
+
+
+
+
+
+
+
+/* pills *//* pills *//* pills *//* pills *//* pills */
+
+
+.custom-pill{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F1F1F1;
+    height: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.0);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.0);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.0);
+
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-pill:hover{
+    background-color: #1D2C41;
+    color: white;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.5);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.active-custom-pill{
+    background-color: #1D2C41;
+    color: white;
+    -webkit-box-shadow:0 0 10px rgba(0,0,0,0.5);
+    -moz-box-shadow:0 0 10px rgba(0,0,0,0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.pill-text{
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px;
+    margin-left: 20px;
+}
+
+.pill-icon{
+    margin-right: 20px;
+}
+
+
+
+
+
+/* sub *//* sub *//* sub *//* sub *//* sub */
+
+#category-name{
+    font-size: 60px;
+    font-weight: 700;
+    color: #1D2C41;
+}
+
+#view-button{
+    font-size: 25px;
+    margin-left: 4px;
+    font-weight: 600;
+    color: #1D2C41;
+}
+
+#sub-category-box{
+    margin-top: 15px;
+}
+
+.sub-category-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    float: left;
+    margin-right: 7px;
+    margin-bottom: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    background-color: white;
+    border-style: solid;
+    border-color: #EBEBEB;
+    border-width: 3px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: 0.2s ease-in-out;
+}
+
+.sub-category-button:hover{
+    color: white;
+    background-color: #1D2C41;
+    border-color: #1D2C41;
+}
+
+
+.scb-active{
+    color: white;
+    background-color: #1D2C41;
+    border-color: #1D2C41;
+}
+
+
+
+
+
+
+
+/* small product pallet *//* small product pallet *//* small product pallet *//* small product pallet */
+
+
+.small-product-pallet{
+    
+}
+
+.image-pallet{
+
+}
+
+.product-image{
+
+}
+
+.info-pallet{
+
+}
+
+.product-info{
+
+}
+
+.product-title{
+
+}
+
+.product-des{
+
+}
+
+.info-image-pallet{
+
+}
+
+.product-icon{
+
+}

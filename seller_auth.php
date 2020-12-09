@@ -71,11 +71,11 @@ if (isset($_COOKIE[$cookie_name])) {
                     <input type="text" class="seller-input-palet-text-box" v-model="user.email">
                     <br><br>
                     <label for="" class="seller-input-palet-text-label">Password: </label>
-                    <input type="password" class="seller-input-palet-text-box" v-model="user.password">
+                    <input type="password" id="txtPassword" onkeypress="checkEnter(event);" class="seller-input-palet-text-box" v-model="user.password">
                     <label for="" id="seller-input-palet-forgot-password">Forgot password? </label>
 
                     <div id="seller-input-palet-bottom">
-                        <button class="seller-button" @click="login_user_web()">
+                        <button class="seller-button"  @click="login_user_web()">
                             LOGIN
                         </button>
                         <div id="seller-register-text-box">
@@ -216,7 +216,14 @@ if (isset($_COOKIE[$cookie_name])) {
 
 
 
-
+<script>
+    function checkEnter(params) {
+        
+        if (params.keyCode == 13) {
+            app.login_user_web();
+        }
+    }
+</script>
 
 
     <script>

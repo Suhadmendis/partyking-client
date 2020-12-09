@@ -136,7 +136,7 @@ if (isset($_COOKIE[$cookie_name])) {
             
             <div class="col-lg-4 order-lg-1 anchor" id="seller-information-palet-login" v-show="!information_pallet">
                 <div id="new-seller-information-palet-logo-box">
-                    <img id="new-seller-information-palet-logo" src="_img/logo full site.webp" alt="">
+                    <img id="new-seller-information-palet-logo" src="_img/logo full siteo.png" alt="">
                 </div>
                 <div id="new-seller-information-palet-user-box">
                     <img id="new-seller-information-palet-user" v-bind:src="user.url" alt="">

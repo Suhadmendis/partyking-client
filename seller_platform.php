@@ -65,7 +65,7 @@ if (isset($_COOKIE[$cookie_name])) {
             <div class="col-lg-2 nopadding" id="seller-information-palet">
             <br>
                 <div id="account-information-palet-logo-box">
-                    <img id="account-information-palet-logo" src="_img/logo full site.webp" alt="">
+                    <img id="account-information-palet-logo" src="_img/logo full siteo.png" alt="">
                 </div>
                 <div id="account-information-palet-user-box">
                     <img id="account-information-palet-user" v-bind:src="user.url" alt="">
@@ -96,7 +96,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
                 <div class="store-pill store-pill-active">
                     <div id="account-information-store-logo-box">
-                        <img id="account-information-store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full site.webp'" alt="" alt="">
+                        <img id="account-information-store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full siteo.png'" alt="" alt="">
                         <img id="account-information-store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="" alt="">
                     </div>
                     <p class="account-information-store-name">
@@ -115,7 +115,7 @@ if (isset($_COOKIE[$cookie_name])) {
                 <div class="row">
                     <div class="col-sm-2">
                         <div id="store-logo-area">
-                            <img id="store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full site.webp'" alt="">
+                            <img id="store-logo" v-if="store.url == ''" v-bind:src="'_img/logo full siteo.png'" alt="">
                             <img id="store-logo" v-if="store.url != ''" v-bind:src="'uploads/store_logo/' + store.url" alt="">
                         </div>
                         

@@ -53,6 +53,19 @@ html, body{
 .seller-relationship-palet-image{
     width: 100px;
 }
+
+.seller-relationship-palet-image-infinity{
+    width: 100px;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .seller-relationship-palet-image-user{
     width: 100px;
     border-radius: 50%;
@@ -65,7 +78,7 @@ html, body{
 }
 
 #seller-goto-btn{
-    margin-left: 22px;
+    margin-left: 5px;
 }
 
 .goto-btn{
@@ -118,6 +131,38 @@ html, body{
         width: 100%;
         text-align: center;
     }
+}
+
+
+
+@media only screen and (max-width: 400px) {
+    body{
+        background-color: red;
+    }
+    #seller-thank-palet{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        /* height: 100vh; */
+    }
+    #seller-thank-palet-box{
+        width: 100%;
+        text-align: center;
+    }
+    #seller-relationship-palet-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+    }
+    #seller-goto-btn {
+        margin-left: 0px;
+    }
+    
 }
 
 

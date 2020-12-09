@@ -8,7 +8,7 @@ var app = new Vue({
       full_name: "",
       email: "",
       password: "",
-      url: "_img/linked_face.webp",
+      url: "_img/linked_faceo.PNG",
     },
   },
   methods: {
@@ -69,6 +69,8 @@ var app = new Vue({
         });
     },
     login_user_fb: function () {
+       
+
       axios
         .get(
           "server/seller_operation_data.php?Command=login_user_fb&fb_id=" +
@@ -89,6 +91,17 @@ var app = new Vue({
         });
     },
     login_user_web: function () {
+if (this.user.email == "") {
+  this.message = "E-mail is not Entered";
+  $("#exampleModal1").modal("show");
+  return;
+}
+if (this.user.password == "") {
+  this.message = "Password is not Entered";
+  $("#exampleModal1").modal("show");
+  return;
+  // alert("Name is not Entered");
+}
       axios
         .get(
           "server/seller_operation_data.php?Command=login_user_web&email=" +

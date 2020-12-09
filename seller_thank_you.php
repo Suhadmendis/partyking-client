@@ -52,7 +52,7 @@ session_start();
 
                 <div id="seller-relationship-palet-box">
                         <div class="seller-relationship-palet-sub-box">
-                            <img class="seller-relationship-palet-image" src="_img/logo full site.webp" alt="">
+                            <img class="seller-relationship-palet-image" src="_img/logo full siteo.png" alt="">
                             <p class="seller-relationship-palet-text">Party King</p>
                         </div>
 
@@ -61,7 +61,7 @@ session_start();
                         </div>
 
                         <div class="seller-relationship-palet-sub-box">
-                            <img class="seller-relationship-palet-image" src="_img/infinity_love.png" alt="">
+                            <img class="seller-relationship-palet-image-infinity" src="_img/infinity_love.png" alt="">
                         </div>
 
                         <div class="seller-relationship-palet-sub-box">
@@ -69,7 +69,8 @@ session_start();
                         </div>
 
                         <div class="seller-relationship-palet-sub-box">
-                            <img class="seller-relationship-palet-image-user" src="_img/linked_face.PNG" alt="">
+                            <br>
+                            <!-- <img class="seller-relationship-palet-image-user" src="_img/linked_face.PNG" alt=""> -->
                             <p class="seller-relationship-palet-text"><?php echo $_SESSION['CURRENT_USER']; ?></p>
                         </div>
                         

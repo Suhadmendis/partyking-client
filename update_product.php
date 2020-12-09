@@ -62,7 +62,7 @@ if (isset($_COOKIE[$cookie_name])) {
 
     <div class="container-fluid" id="app">
         <div class="row">
-            <div class="col-md-12">
+            <div class="offset-md-1 col-lg-11">
                 <a href="seller_platform.php">
                     <button class="btn btn-secondary">Back</button>
                 </a>
@@ -72,26 +72,15 @@ if (isset($_COOKIE[$cookie_name])) {
         <div class="row">
             <div class="col-md-12">
                 <div id="head-topic">
-                    <h2 style="color:  #1D2C41;">Add Your Product</h2>
+                    <h3 style="color:  #1D2C41;">Add Your Product</h3>
                 </div>
             </div>
         </div>
         <br>
 
         <div class="row">
-            <div class="col-lg-4">
-                <div id="primary-upload-image-area">
-
-                    <img id="primary-upload-image" v-bind:src="PRODUCT.pro_image" alt="">
-                    <div class="sub-upload-image">
-                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
-                            Upload
-                            <input id="upload-input" type="file" name="file" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
+            
+            <div class="offset-lg-1 col-lg-7">
                 <div class="upload-product-details">
                     <!-- <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
                         Upload
@@ -174,6 +163,39 @@ if (isset($_COOKIE[$cookie_name])) {
    
                 </div>
             </div>
+            <div class="col-lg-4">
+                <div id="primary-upload-image-area">
+
+                    <img id="primary-upload-image" v-bind:src="PRODUCT.pro_image" alt="">
+                    <div class="sub-upload-image">
+                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
+                            Upload
+                            <input id="upload-input" type="file" name="file" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            
+            <div class="offset-lg-1 col-lg-11">
+                <div class="upload-product-details">
+                    <!-- <div style="background-color:  #1D2C41;" id="upload-pallet" class="file btn btn-sm btn-primary">
+                        Upload
+                        <input id="upload-input" type="file" name="file" />
+                    </div> -->
+                    <div class="upload-product-details-pallet">
+                        
+                        <button @click="update_product()" class="btn btn-secondary">Update</button>
+                    </div>
+
+                    <br><br>
+   
+                </div>
+            </div>
+            
         </div>
 
         <!-- Modal -->

@@ -24,7 +24,7 @@ var app = new Vue({
       street_address: "Street address",
       city: "City",
       postal: "ZIP / Postal",
-      url: "logo full site.webp",
+      url: "logo full siteo.png",
     },
     PRODUCTS: [],
     product_pallet: false,
@@ -38,6 +38,10 @@ var app = new Vue({
         .get("server/product_operation_data.php?Command=generateProducts")
         .then((response) => {
           this.PRODUCTS = response.data[0];
+          console.log(response.data[1].length);
+          if (response.data[1].length == 0) {
+            this.logout();
+          }
           this.getPic(response.data[1][0].fb_id);
           this.user.full_name =
             response.data[1][0].first_name ||
@@ -58,7 +62,7 @@ var app = new Vue({
           this.store.city = response.data[2][0].city_name || "City";
           this.store.postal = response.data[2][0].postal || "ZIP / Postal";
           this.store.url =
-            response.data[2][0].img_logo || "logo full site.webp";
+            response.data[2][0].img_logo || "logo full siteo.png";
         });
     },
     getPic: function (fb_id) {
@@ -73,7 +77,6 @@ var app = new Vue({
         });
     },
     delete_product: function (ref) {
-      
       if (confirm("Do you want to Remove this Product?")) {
         axios
           .get(
@@ -86,9 +89,7 @@ var app = new Vue({
             }
           });
       } else {
-        
       }
-      
     },
     edit: function (flag) {
       this.updateMainPanel = "";

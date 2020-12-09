@@ -26,7 +26,9 @@ html, body{
   background:  #aaaaaa;
 }
 
-
+.fb_button{
+    width: 100px;
+}
 #seller-main-section{
     
 }

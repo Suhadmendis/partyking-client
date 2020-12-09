@@ -129,9 +129,19 @@ if (isset($_COOKIE[$cookie_name])) {
                         <p class="store-input-name-tagline">
                             {{ store.tagline }} <i class="fas fa-pen edit-icon-tagline" @click="edit('tagline');"></i>
                         </p>
-                        <a href="add_product.php">
-                            <button  style="background-color:  #1D2C41;" class="file btn btn-sm btn-primary">Add Product</button>
-                        </a>
+                        <div class="mobile-fix1">
+                            <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
+                                Upload Logo
+                                <input id="upload-input" type="file" name="file" />
+                            </div>
+                            
+                        </div>
+                        <div class="mobile-fix2">
+                            <a href="add_product.php">
+                                <button  style="background-color:  #1D2C41;" class="file btn btn-sm btn-primary">Add Product</button>
+                            </a>
+                        </div>
+                        
                 
                         
                     </div>
@@ -158,11 +168,20 @@ if (isset($_COOKIE[$cookie_name])) {
 
                 <div class="row">
                     <div class="col-md-12" id="add-button-pallet">
-                        <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
-                            Upload Logo
-                            <input id="upload-input" type="file" name="file" />
+                        <div class="mobile-fix2">
+                           <div style="background-color:  #1D2C41;" id="upload-pallet" class="seller-button">
+                                Upload Logo
+                                <input id="upload-input" type="file" name="file" />
+                            </div>
                         </div>
+
                         
+                        <div class="mobile-fix1">
+                             <a href="add_product.php">
+                                <button  style="background-color:  #1D2C41;" class="file btn btn-sm btn-primary">Add Product</button>
+                            </a>
+                            
+                        </div>
 
                     </div>
                 </div>

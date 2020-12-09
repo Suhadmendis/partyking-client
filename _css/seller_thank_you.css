@@ -114,6 +114,9 @@ html, body{
         width: 70%;
         text-align: center;
     }
+    #seller-goto-btn{
+        margin-left: 5px;
+    }
 }
 
 

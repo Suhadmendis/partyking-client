@@ -201,20 +201,21 @@
                 </div>
             </div>
 
-
+            <br>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-3" v-for="product in PRODUCTS" @click="goto_product(product.REF)">
                     <div class="small-product-pallet">
                         <div class="image-pallet">
-                            <img class="product-image" src="" alt="">
+                            <img class="product-image" src="uploads/1/products/girl.jpg" alt="">
                         </div>
                         <div class="info-pallet">
                             <div class="product-info">
                                 <p class="product-title">Face Serum</p>
                                 <p class="product-des">Anti wrinkle</p>
                             </div>
-                            <div class="info-image-pallet">
+                            <div class="info-icon-pallet">
+                                <p class="product-price">Rs 2200</p>
                                 <i class="fas fa-eye product-icon"></i>
                             </div>
                         </div>

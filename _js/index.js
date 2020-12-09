@@ -1,6 +1,18 @@
 var app = new Vue({
   el: "#app",
   data: {
+    PRODUCTS: [
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+      { name: "" },
+    ],
     CATEGORIES: "",
     selected_category: "",
     selected_category_name: "",
@@ -22,12 +34,14 @@ var app = new Vue({
           );
         });
     },
-    activate: function (REF,name) {
+    activate: function (REF, name) {
       for (let index = 0; index < this.CATEGORIES.length; index++) {
         if (this.CATEGORIES[index].REF == REF) {
           this.selected_category = this.CATEGORIES[index];
           this.selected_sub_categories = this.CATEGORIES[index].sub_categories;
-          this.selected_sub_category = this.CATEGORIES[index].sub_categories[0].REF;
+          this.selected_sub_category = this.CATEGORIES[
+            index
+          ].sub_categories[0].REF;
           this.selected_category_name = name;
           this.CATEGORIES[index].active_pill = 1;
         } else {
@@ -35,8 +49,11 @@ var app = new Vue({
         }
       }
     },
-    activate_sub: function (REF,name) {
+    activate_sub: function (REF) {
       this.selected_sub_category = REF;
+    },
+    goto_product: function (REF) {
+      alert(REF);
     },
   },
 });

@@ -204,14 +204,14 @@
             <br>
 
             <div class="row">
-                <div class="col-md-3" v-for="product in PRODUCTS" @click="goto_product(product.name)">
+                <div class="col-md-3" v-for="product in PRODUCTS_SHOW" @click="goto_product(product.REF)">
                     <div class="small-product-pallet">
                         <div class="image-pallet">
                             <img class="product-image" src="uploads/1/products/girl.jpg" alt="">
                         </div>
                         <div class="info-pallet">
                             <div class="product-info">
-                                <p class="product-title">Face Serum</p>
+                                <p class="product-title">{{ product.name }}</p>
                                 <p class="product-des">Anti wrinkle</p>
                             </div>
                             <div class="info-icon-pallet">

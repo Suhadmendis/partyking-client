@@ -1,21 +1,11 @@
 var app = new Vue({
   el: "#app",
   data: {
-    PRODUCTS: [
-      { name: "Title 1" },
-      { name: "Title 2" },
-      { name: "Title 3" },
-      { name: "Title 4" },
-      { name: "Title 5" },
-      { name: "Title 6" },
-      { name: "Title 7" },
-      { name: "Title 8" },
-      { name: "Title 9" },
-      { name: "Title 10" },
-    ],
+    PRODUCTS: "",
+    PRODUCTS_SHOW: [],
     CATEGORIES: "",
     selected_category: "",
-    selected_category_name: "",
+    selected_category_name: "Loading...",
     selected_sub_categories: "",
     selected_sub_category: "",
   },
@@ -32,6 +22,17 @@ var app = new Vue({
             this.CATEGORIES[0].REF,
             this.CATEGORIES[0].category_name
           );
+
+          // call_products
+          this.get_products();
+        });
+    },
+    get_products: function () {
+      axios
+        .get("server/product_operation_data.php?Command=user_get_products")
+        .then((response) => {
+          this.PRODUCTS = response.data[0];
+          this.show_products();
         });
     },
     activate: function (REF, name) {
@@ -48,13 +49,25 @@ var app = new Vue({
           this.CATEGORIES[index].active_pill = 0;
         }
       }
+      this.show_products();
     },
     activate_sub: function (REF) {
       this.selected_sub_category = REF;
+      this.show_products();
     },
     goto_product: function (REF) {
-      alert(REF);
-      location.replace("");
+      location.replace("product_page.html?REF=" + REF);
+    },
+    show_products: function () {
+      this.PRODUCTS_SHOW = [];
+
+      for (let index = 0; index < this.PRODUCTS.length; index++) {
+        if (this.PRODUCTS[index].category_ref == this.selected_category.REF) {
+          if (this.PRODUCTS[index].sub_category_ref == this.selected_sub_category) {
+            this.PRODUCTS_SHOW.push(this.PRODUCTS[index]);
+          }
+        }
+      }
     },
   },
 });

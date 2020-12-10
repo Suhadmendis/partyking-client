@@ -51,16 +51,16 @@
 
                     
                     <ul>
-                        <li class="seller-information-palet-benefits-text-des">Customer will solve your storage problem by making back to back renting. </li>
+                        <li class="seller-information-palet-benefits-text-des">Customer will solve your storage problem by making back to back rent. </li>
                     </ul>
                     <ul>
-                        <li class="seller-information-palet-benefits-text-des">Wider reach to audience and speedy way to approach markets.</li>
+                        <li class="seller-information-palet-benefits-text-des">Wider reach to the audience and speedy way to approach markets.</li>
                     </ul>
                     <ul>
                         <li class="seller-information-palet-benefits-text-des">You can easily display all your products within 2-3 clicks.</li>
                     </ul>
                     <ul>
-                        <li class="seller-information-palet-benefits-text-des">High chances of customers searching on your store.</li>
+                        <li class="seller-information-palet-benefits-text-des">High chances of customers searching in your store.</li>
                     </ul>
                     <ul>
                         <li class="seller-information-palet-benefits-text-des">Party King Offers Seller Flexibility to promote their products.</li>

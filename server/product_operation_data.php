@@ -21,10 +21,6 @@ if ($_GET["Command"] == "generate") {
     
 }
 
-
-
-
-
 if ($_GET["Command"] == "getProduct") {
    header('Content-Type: application/json');
     
@@ -35,13 +31,11 @@ if ($_GET["Command"] == "getProduct") {
 
     array_push($objArray,$row1);
 
-
     $sql = "SELECT * FROM m_category where REF = '" . $row1['category_ref'] . "'";
     $result = $conn->query($sql);
     $row2 = $result->fetch();
 
     array_push($objArray,$row2);
-
 
     $sql = "SELECT * FROM m_sub_category where REF = '" . $row1['sub_category_ref'] . "'";
     $result = $conn->query($sql);
@@ -52,6 +46,22 @@ if ($_GET["Command"] == "getProduct") {
     echo json_encode($objArray);
     
 }
+
+
+if ($_GET["Command"] == "user_get_products") {
+   header('Content-Type: application/json');
+    
+    $objArray = Array();
+    $sql = "SELECT * FROM m_product";
+    $result = $conn->query($sql);
+    $row = $result->fetchAll();
+
+    array_push($objArray,$row);
+
+    echo json_encode($objArray);
+    
+}
+
 
 
 if ($_GET["Command"] == "generateProducts") {

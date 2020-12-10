@@ -23,6 +23,20 @@ if ($_GET["Command"] == "checkUser") {
     
 }
 
+if ($_GET["Command"] == "check_sellers") {
+   header('Content-Type: application/json');
+    
+    $objArray = Array();
+    $sql = "SELECT first_name, last_name, tel_1 FROM m_registration";
+    $result = $conn->query($sql);
+    $row = $result->fetchAll();
+
+    array_push($objArray,$row);
+
+    echo json_encode($objArray);
+    
+}
+
 
 
 

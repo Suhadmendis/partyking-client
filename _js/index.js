@@ -2,16 +2,16 @@ var app = new Vue({
   el: "#app",
   data: {
     PRODUCTS: [
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
-      { name: "" },
+      { name: "Title 1" },
+      { name: "Title 2" },
+      { name: "Title 3" },
+      { name: "Title 4" },
+      { name: "Title 5" },
+      { name: "Title 6" },
+      { name: "Title 7" },
+      { name: "Title 8" },
+      { name: "Title 9" },
+      { name: "Title 10" },
     ],
     CATEGORIES: "",
     selected_category: "",
@@ -54,6 +54,7 @@ var app = new Vue({
     },
     goto_product: function (REF) {
       alert(REF);
+      location.replace("");
     },
   },
 });

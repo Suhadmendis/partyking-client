@@ -204,7 +204,7 @@
             <br>
 
             <div class="row">
-                <div class="col-md-3" v-for="product in PRODUCTS" @click="goto_product(product.REF)">
+                <div class="col-md-3" v-for="product in PRODUCTS" @click="goto_product(product.name)">
                     <div class="small-product-pallet">
                         <div class="image-pallet">
                             <img class="product-image" src="uploads/1/products/girl.jpg" alt="">

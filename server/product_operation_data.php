@@ -62,6 +62,26 @@ if ($_GET["Command"] == "user_get_products") {
     
 }
 
+if ($_GET["Command"] == "user_get_product") {
+   header('Content-Type: application/json');
+    
+    $objArray = Array();
+    $sql = "SELECT * FROM m_product where REF = '" . $_GET['REF'] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetch();
+
+    array_push($objArray,$row);
+
+    $sql = "SELECT * FROM m_store_registration where REF = '" . $row['store_ref'] . "'";
+    $result = $conn->query($sql);
+    $row = $result->fetch();
+
+    array_push($objArray,$row);
+
+    echo json_encode($objArray);
+    
+}
+
 
 
 if ($_GET["Command"] == "generateProducts") {

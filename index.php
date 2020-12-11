@@ -8,6 +8,27 @@
     <title>Partyking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="p:domain_verify" content="113937a596f36d03edeb800760f78acc"/>
+    
+    
+    <!-- Pinterest Tag -->
+<script>
+!function(e){if(!window.pintrk){window.pintrk = function () {
+window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+  n=window.pintrk;n.queue=[],n.version="3.0";var
+  t=document.createElement("script");t.async=!0,t.src=e;var
+  r=document.getElementsByTagName("script")[0];
+  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+pintrk('load', '2612714408352', {em: '<user_email_address>'});
+pintrk('page');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt=""
+  src="https://ct.pinterest.com/v3/?event=init&tid=2612714408352&pd[em]=<hashed_email_address>&noscript=1" />
+</noscript>
+<!-- end Pinterest Tag -->
+
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -207,7 +228,7 @@
                 <div class="col-md-3" v-for="product in PRODUCTS_SHOW" @click="goto_product(product.REF)">
                     <div class="small-product-pallet">
                         <div class="image-pallet">
-                            <img class="product-image" src="uploads/1/products/girl.jpg" alt="">
+                            <img class="product-image" v-bind:src="'https://www.partyking.lk/uploads/1/products/' + product.image_1" alt="">
                         </div>
                         <div class="info-pallet">
                             <div class="product-info">

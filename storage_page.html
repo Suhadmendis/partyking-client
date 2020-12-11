@@ -51,7 +51,6 @@
                 </a>
                 <a id="company-name" href="#">
                     <p>Party King</p>
-
                 </a>
 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
@@ -93,147 +92,165 @@
         </div>
     </nav>
 
+    <br>
 
+    <div class="container-fluid">
 
-    <br><br><br>
-
-    <div class="container">
+        <!-- banner section  -->
         <div class="row">
-            <div class="col-md-6">
-                <img v-bind:src="'https://www.partyking.lk/uploads/1/products/' + PRODUCT.image_1" class="product-image-rounded float-left" alt="...">
-            </div>
-            <div class="col-md-6">
-                <div id="description-box">
-
-                    <div id="description-upper">
-                        <div id="product-name-box">
-                            <h2 id="product-name-text">{{ PRODUCT.name }}</h2>
-                        </div>
-                    
-                        <hr>
-                    
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="tile-box">
-                                    <p class="tile-head-text">Condition</p>
-                                    <p class="tile-des-text">{{ PRODUCT.pro_condition }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="tile-box">
-                                    <p class="tile-head-text">Type</p>
-                                    <p class="tile-des-text">{{ PRODUCT.type }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row" v-if="PRODUCT.brand != '' && PRODUCT.model != '' && PRODUCT.theme != ''">
-                            <div class="col-md-4" v-if="PRODUCT.brand != ''">
-                                <div class="tile-box">
-                                    <p class="tile-head-text">Brand</p>
-                                    <p class="tile-des-text">{{ PRODUCT.brand }}</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4" v-if="PRODUCT.model != ''">
-                                <div class="tile-box">
-                                    <p class="tile-head-text">Model</p>
-                                    <p class="tile-des-text">{{ PRODUCT.model }}</p>
-                                </div>
-                            </div>
-                        
-                        
-                            <div class="col-md-4" v-if="PRODUCT.theme != ''">
-                                <div class="tile-box">
-                                    <p class="tile-head-text">Theme</p>
-                                    <p class="tile-des-text">{{ PRODUCT.theme }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    
-                    
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="main-info-box">
-                                    <div class="main-info-image">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <div class="main-info-text">{{ STORE.city_name }}</div>
-                                </div>
-                            </div>
-                    
-                            <div class="col-md-5">
-                                <div class="main-info-box">
-                                    <div class="main-info-image">
-                                        <i class="fas fa-money-bill-wave"></i>
-                                    </div>
-
-                                    <div class="main-info-text">Rs {{ price_format(PRODUCT.sell_price) }}</div>
-                                </div>
-                            </div>
-                        </div>
-                    
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p id="main-description-head">Description</p>
-                            </div>
-                    
-                            <div class="col-md-12">
-                                <p id="main-description-text">{{ PRODUCT.description }}
-                                </p>
-                            </div>
-                        </div>
-
-                        
-
-                    </div>
-
-
-<br>
-
-                    <div id="description-lower" @click="show_contact()">
-                    
-                        <div class="row" id="contact-hidden">
-                            <div class="col-md-5">
-                                <div id="seller-contact">
-                                    <p id="seller-contact-label">Contact</p>
-                                    <p id="seller-contact-number">{{ STORE.tel_1 }}</p>
-                                </div>
-                            </div>
-                        
-                            <div class="col-md-7">
-                                <div id="seller-address">
-                                    <p id="seller-address-label">Address</p>
-                                    <p id="seller-address-number">{{ STORE.address_1 }}</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div id="seller-store" @click="goto_store(STORE.REF)">
-                                    <img id="seller-store-logo" v-bind:src="'https://www.partyking.lk/uploads/store_logo/' + STORE.img_logo" alt="">
-                                    
-                                    <p id="seller-store-name">{{ STORE.name }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="bottom-buttom">
-                            <p id="contact-seller">Contact Seller</p>
-                        </div>
-
-                    </div>
-                    
-
-                    
-                    
-                    
+            <div class="col-md-3">
+                <div id="store-logo-area">
+                    <!-- 1300 400 -->
+                    <img src="_img/banner.jpg" class="store-logo-image">
                 </div>
-
-
+            </div>
+            <div class="col-md-9">
+                <div id="cover-area">
+                    <!-- 1300 400 -->
+                    <img src="_img/banner.jpg" class="cover">
+                </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="note-pallet">
+                    <div id="icon-pallet">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <p id="note-message">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                        has been the industry's standard
+                        dummy text ever since the 1500s. click here Become a seller</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div id="store-info-pallet">
+
+                    <div id="store-main-contact-button">
+                        <p id="store-name">Party King</p>
+                        <p id="store-tagline">Learn or depart Learn or depart</p>
+                    </div>
+                    
+                    <br>
+                    
+                    <div class="store-main-contact-info">
+                        <p class="info-label">Number:</p>
+                        <p class="info-detail">0778182596</p>
+                    </div>
+                    <div class="store-main-contact-info">
+                        <p class="info-label">E-mail:</p>
+                        <p class="info-detail">info@partyking.com</p>
+                    </div>
+                    <div class="store-main-contact-info">
+                        <p class="info-label">City:</p>
+                        <p class="info-detail">Dehiwala</p>
+                    </div>
+                    <div class="store-main-contact-info">
+                        <p class="info-label">Address:</p>
+                        <p class="info-detail">No: 154, Party Lane</p>
+                    </div>
+                    
+                    <br>
+
+                    <div class="store-main-contact-map-pallet">
+                        <div style="height: 300px;"></div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+
+
+                    <div class="col-md-6">
+                        <div class="product-pallet">
+                            <div class="product-image-box">
+                                <img src="" alt="" class="product-image">
+                            </div>
+                            <div class="product-detail-pallet">
+
+                                <div class="product-detail-top">
+                                    <h3 class="product-name"></h3>
+                                    <p class="product-condition"></p>
+                                    <p class="product-type"></p>
+                                </div>
+
+                                <div class="product-detail-middle">
+                                    <div class="product-cash-icon-pallet">
+                                        <!-- font-awesome -->
+                                    </div>
+                                    <div class="product-cash-price">
+                                        <p class="product-cash-price"></p>
+                                    </div>
+                                </div>
+
+                                <div class="product-detail-bottom">
+                                    <div class="product-location-icon-pallet">
+                                        <!-- font-awesome -->
+                                    </div>
+                                    <div class="product-location-icon-pallet">
+                                        <p class="product-location-text"></p>
+                                    </div>
+                                    <div class="product-view-button-pallet">
+                                        <button class="product-view-button"></button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

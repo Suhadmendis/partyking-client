@@ -1,0 +1,211 @@
+
+
+
+
+
+
+
+#store-logo-area{
+    
+}
+
+.store-logo-image{
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+
+#cover-area{
+    
+}
+
+.cover{
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+#note-pallet{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    border: 2px solid #1D2C41;
+    border-radius: 10px; 
+    background-color:rgb(29,44,65,0.15);
+}
+
+#icon-pallet{
+    color: #1D2C41;
+    padding-left: 15px;
+}
+
+#note-message{
+    padding-left: 15px;
+    color: #1D2C41;
+    font-size: 13px;
+    margin: 0px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+#store-info-pallet{
+    background-color: #EBEBEB;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#store-main-contact-button{
+    background-color: #1D2C41;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#store-name{
+    margin: 5px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+#store-tagline{
+    margin: 5px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+
+
+
+
+
+.store-main-contact-info{
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
+    color: #1D2C41;
+}
+
+.info-label{
+    margin: 0px;
+    font-size: 13px;
+    font-weight: 600;
+    width: 70px;
+}
+
+.info-detail{
+    margin-top: 1px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+
+
+
+.store-main-contact-map-pallet{
+    opacity: 0.3;
+    background-color: #1D2C41;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+/* product-pallet */
+
+.product-pallet{
+
+}
+
+.product-image-box{
+
+}
+
+.product-image{
+
+}
+
+.product-detail-pallet{
+
+}
+
+.product-detail-top{
+
+}
+
+.product-name{
+
+}
+
+.product-condition{
+
+}
+
+.product-type{
+
+}
+
+.product-detail-middle{
+
+}
+
+.product-cash-icon-pallet{
+
+}
+
+.product-cash-price{
+
+}
+
+
+.product-detail-bottom{
+
+}
+
+.product-location-icon-pallet{
+
+}
+
+
+.product-location-text{
+
+}
+
+.product-view-button-pallet{
+
+}
+
+.product-view-button{
+
+}

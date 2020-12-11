@@ -176,10 +176,7 @@ pintrk('page');
             <!-- 1300 400 -->
             <img src="_img/banner.jpg" class="banner">
         </div>
-
     </div>
-    
-
 </div>
 
 
